@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "proxy": "http://localhost:7194",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "chalk": "^2.4.2",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",

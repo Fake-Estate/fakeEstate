@@ -5,6 +5,8 @@ const session = require('express-session')
 const cors = require('cors')
 const chalk = require('chalk')
 
+const userCtrl = require('./controllers/users_ctrl')
+
 const app = express()
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
@@ -27,5 +29,6 @@ massive(CONNECTION_STRING).then(db => {
 // Auth Endpoints
 
 // Profile Endpoints
+app.post('/api/profile/create', userCtrl.register)
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
