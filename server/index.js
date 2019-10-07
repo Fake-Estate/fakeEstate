@@ -30,5 +30,7 @@ massive(CONNECTION_STRING).then(db => {
 
 // Profile Endpoints
 app.post('/api/profile/create', userCtrl.register)
+app.post('/api/profile/login', userCtrl.login)
+app.get('/api/profile/logout', userCtrl.logout)
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
