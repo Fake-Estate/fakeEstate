@@ -7,6 +7,7 @@ const chalk = require('chalk')
 
 const userCtrl = require('./controllers/users_ctrl')
 const realCtrl = require('./controllers/realtor_ctrl')
+const authMidd = require('./middleware/auth_middleware')
 
 const app = express()
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -30,10 +31,14 @@ massive(CONNECTION_STRING).then(db => {
 // Realtor Endpoints
 app.post('/api/realtor/create', realCtrl.register)
 app.post('/api/realtor/login', realCtrl.login)
+app.get('/api/realtor/logout', realCtrl.logout)
 
 // User Endpoints
 app.post('/api/profile/create', userCtrl.register)
 app.post('/api/profile/login', userCtrl.login)
 app.get('/api/profile/logout', userCtrl.logout)
+
+// Listing Endpoints
+app.post('/api/listing/create', authMidd.authenticateUser, )
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
