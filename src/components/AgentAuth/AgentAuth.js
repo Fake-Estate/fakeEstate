@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
 import axios from 'axios'
 
-import './Navbar.css'
+import './AgentAuth.css'
 
-export default class Navbar extends Component {
+export default class AgentAuth extends Component {
     constructor(){
         super()
         this.state = {
@@ -12,85 +11,86 @@ export default class Navbar extends Component {
             lastName: '',
             email: '',
             password: '',
-            userRegister: false,
+            license: '',
+            register: false,
             login: false
         }
     }
 
     handleChange = (event) => {
+        console.log(event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
     }  
- 
+
     handleRegisterToggle = () => {
         this.setState({
-            userRegister: !this.state.userRegister
-         })
-    } 
+            register: !this.state.register
+        })
+    }
 
-    
-    
     handleLoginToggle = () => {
         this.setState({
             login: !this.state.login
-         })
-    } 
- 
-    registerUser = () => {
-        const {firstName, lastName, email, password} = this.state
+        })
+    }
+
+    registerAgent = () => {
+        const {firstName, lastName, email, password, license} = this.state
         const body = {
             firstName,
             lastName,
             email,
-            password
+            password,
+            license
 
         }
-        axios.post('/api/profile/create', body)
+        axios.post('/api/realtor/create', body)
             .then(res => {
+                this.props.history.push('/profile/agent')
                 this.setState({
                     firstName: '',
                     lastName: '',
                     email: '',
-                    password: ''
+                    password: '',
+                    license: ''
                 })
-                this.handleRegisterToggle()
+                
             }).catch(error => {
                 console.log(error)
             })
     }
 
-    login = () => {
+    loginAgent = () => {
         const {email, password} = this.state
         const body = {
             email,
             password
         }
 
-        axios.post('/api/profile/login', body)
+        axios.post('/api/realtor/login', body)
             .then(res => {
                 this.setState({
                     email: '',
                     password: ''
                 })
-                this.handleLoginToggle()
+                this.props.history.push('/profile/agent')
             }).catch(error => {
                 console.log(error)
             })
     }
 
 
-    
     render() {
         return (
-            <div className='navbar'>
-                <Link to='/portal'>Realtor Portal</Link>
+            <div>
                 <div>
                     <button onClick={this.handleRegisterToggle}>Register</button>
                     <button onClick={this.handleLoginToggle}>Login</button>
                 </div>
                 
-                    <div className = {!this.state.userRegister ? 'dont-display' : 'display-register'}>
+                    <div className = {!this.state.register ? 'dont-display' : 'display-register'}>
                             <input 
                             placeholder='First Name'
                             type='text'
@@ -106,6 +106,13 @@ export default class Navbar extends Component {
                             value={this.state.lastName}
                             />
                             <input 
+                            placeholder='License #'
+                            type='text'
+                            name='license'
+                            onChange={this.handleChange}
+                            value={this.state.license}
+                            />
+                            <input 
                             placeholder='Email'
                             type='text'
                             name='email'
@@ -119,24 +126,24 @@ export default class Navbar extends Component {
                             onChange={this.handleChange}
                             value={this.state.password}
                             />
-                            <button onClick={this.registerUser}>Register</button>
+                            <button onClick={this.registerAgent}>Register</button>
                     </div>
                     <div className= {!this.state.login ? 'dont-display' : 'display-login'}>
                         <input 
-                        placeholder='Email'
-                        type='text'
-                        name='email'
-                        onChange={this.handleChange}
-                        value={this.state.email}
+                            placeholder='Email'
+                            type='text'
+                            name='email'
+                            onChange={this.handleChange}
+                            value={this.state.email}
                         />
                         <input 
-                        placeholder='Password'
-                        type='password'
-                        name='password'
-                        onChange={this.handleChange}
-                        value={this.state.password}
+                            placeholder='Password'
+                            type='password'
+                            name='password'
+                            onChange={this.handleChange}
+                            value={this.state.password}
                         />
-                        <button onClick={this.login}>Login</button>
+                        <button onClick={this.loginAgent}>Login</button>
                     </div>
             </div>
         )
