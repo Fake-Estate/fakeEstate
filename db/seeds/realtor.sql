@@ -3,7 +3,7 @@ CREATE TABLE realtor (
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     email VARCHAR(50),
-    hash text,
+    password text,
     license text,
-    listing_id integer
+    is_admin boolean default false
 )

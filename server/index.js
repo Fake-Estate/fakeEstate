@@ -6,6 +6,7 @@ const cors = require('cors')
 const chalk = require('chalk')
 
 const userCtrl = require('./controllers/users_ctrl')
+const realCtrl = require('./controllers/realtor_ctrl')
 
 const app = express()
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -26,9 +27,11 @@ massive(CONNECTION_STRING).then(db => {
     console.log(chalk.blue('Database Connected 🦄'))
 }).catch(error => console.log(chalk.bgRed('Connection Failed', error)))
 
-// Auth Endpoints
+// Realtor Endpoints
+app.post('/api/realtor/create', realCtrl.register)
+app.post('/api/realtor/login', realCtrl.login)
 
-// Profile Endpoints
+// User Endpoints
 app.post('/api/profile/create', userCtrl.register)
 app.post('/api/profile/login', userCtrl.login)
 app.get('/api/profile/logout', userCtrl.logout)
