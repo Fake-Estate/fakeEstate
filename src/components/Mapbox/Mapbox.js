@@ -38,7 +38,7 @@ export default class Mapbox extends Component {
         super()
         this.state = {
             viewport: {
-                height: '100vh',
+                height: '90vh',
                 width: '100%',
                 latitude: 39.419220,
                 longitude: -111.950684,
@@ -103,7 +103,7 @@ export default class Mapbox extends Component {
                     <ReactMapGL
                         ref={this.mapRef}
                         {...viewport}
-                        mapStyle="mapbox://styles/mapbox/dark-v9"
+                        mapStyle="mapbox://styles/mapbox/light-v9"
                         onViewportChange={this._onViewportChange}
                         mapboxApiAccessToken={MAPBOX_TOKEN}
                     >
