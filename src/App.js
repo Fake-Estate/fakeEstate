@@ -4,6 +4,7 @@ import routes from './utilities/router'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 
+
 class App extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
