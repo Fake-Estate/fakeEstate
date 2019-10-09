@@ -5,6 +5,9 @@ import routes from './utilities/router'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 
+// Stylesheets
+import './reset.css'
+
 
 class App extends Component {
   static propTypes = {
