@@ -1,7 +1,29 @@
 const getStyles = async (req, res) => {
-    const styles = await req.app.get('db').style.get_style()
+    try{
+        const styles = await req.app.get('db').style.get_style()
         return res.status(200).send(styles)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
 }
+
+const insertStyle = async (req, res) => {
+    try {
+        const {id} = req.params
+        console.log(typeof id)
+        const {style_id} = req.body
+        const styles = await req.app.get('db').style.create_style({style_id, id:+id})
+        res.status(200).send(styles)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+
+}
+
 const create = async(req, res) => {
     try {
         const db = req.app.get('db')
@@ -40,6 +62,7 @@ const getListings = async(req, res) => {
 
 module.exports = {
     getStyles,
+    insertStyle,
     create,
     getListings
 }
