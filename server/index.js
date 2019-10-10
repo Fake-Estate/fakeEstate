@@ -7,6 +7,7 @@ const chalk = require('chalk')
 
 const userCtrl = require('./controllers/users_ctrl')
 const realCtrl = require('./controllers/realtor_ctrl')
+const createCtrl = require('./controllers/create_listing_ctrl')
 const authMidd = require('./middleware/auth_middleware')
 
 const app = express()
@@ -38,6 +39,8 @@ app.post('/api/profile/login', userCtrl.login)
 app.get('/api/profile/logout', userCtrl.logout)
 
 // Listing Endpoints
+app.get('/api/auth/listing/style', authMidd.authenticateUser, createCtrl.getStyles)
 app.post('/api/listing/create', authMidd.authenticateUser, )
+
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
