@@ -32,7 +32,17 @@ const getListings = async(req, res) => {
     }
 }
 
+const getType = async(req, res) => {
+    try {
+        const db = req.app.get('db')
 
+        let response = await db.type.get_type()
+        res.send(response)
+    } catch(error) {
+        if(error) throw error
+        console.log('Abort, Abort', error)
+    }
+}
 
 
 
@@ -41,5 +51,6 @@ const getListings = async(req, res) => {
 module.exports = {
     getStyles,
     create,
-    getListings
+    getListings,
+    getType
 }
