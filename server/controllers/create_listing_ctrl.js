@@ -23,8 +23,12 @@ const create = async(req, res) => {
 const getListings = async(req, res) => {
     try {
         const db = req.app.get('db')
+        let response = await db.listing.get_all_listings()
+        res.send(response)
     } catch (error) {
-        
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
     }
 }
 
@@ -36,5 +40,6 @@ const getListings = async(req, res) => {
 
 module.exports = {
     getStyles,
-    create
+    create,
+    getListings
 }

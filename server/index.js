@@ -42,6 +42,7 @@ app.get('/api/profile/logout', userCtrl.logout)
 app.get('/api/auth/listing/style', authMidd.authenticateUser, createCtrl.getStyles)
 app.post('/api/listing/create', authMidd.authenticateUser, )
 app.post('/api/auth/listing/create', authMidd.authenticateUser, createCtrl.create )
+app.get('/api/listings', createCtrl.getListings)
 
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
