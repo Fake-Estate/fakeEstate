@@ -98,14 +98,22 @@ class Navbar extends Component {
                       className="burger-menu"/>
                 </div>
                 <div className={this.props.slide ? "nav-menu slide-out" : "nav-menu"}>
-                    <Icon.X className='closer' onClick={this.slideOut}/>
-                    <Link to='/portal'>Realtor Portal</Link>
-                    <div className='auth-btn'>
-                        <button onClick={this.handleRegisterToggle}>Register</button>
-                        <button onClick={this.handleLoginToggle}>Login</button>
-                    </div>
+                    <div className='empty-space' onClick={this.slideOut}></div>
+                    <div className='inner-nav'>
+                        <div className='close-btn'>
+                        <Icon.X className='closer' onClick={this.slideOut}/>
+                        </div>
+                        <div className='realtor-container'>
+                            <Link to='/portal' className='realtor-portal'>Realtor Portal</Link>
+                        </div>
+                        <div className='register-container'>
+                            <button className='register-btn' onClick={this.handleRegisterToggle}>Register</button>
+                        </div>
+                        <div className='login-container'>
+                            <button className='login-btn' onClick={this.handleLoginToggle}>Login</button>
+                        </div>
                 
-                    <div className = {!this.state.userRegister ? 'dont-display' : 'display-register'}>
+                        <div className = {!this.state.userRegister ?'dont-display' : 'display-register'}>
                             <input 
                             placeholder='First Name'
                             type='text'
@@ -135,23 +143,24 @@ class Navbar extends Component {
                             value={this.state.password}
                             />
                             <button onClick={this.registerUser}>Register</button>
-                    </div>
-                    <div className= {!this.state.login ? 'dont-display' : 'display-login'}>
-                        <input 
-                        placeholder='Email'
-                        type='text'
-                        name='email'
-                        onChange={this.handleChange}
-                        value={this.state.email}
-                        />
-                        <input 
-                        placeholder='Password'
-                        type='password'
-                        name='password'
-                        onChange={this.handleChange}
-                        value={this.state.password}
-                        />
-                        <button onClick={this.login}>Login</button>
+                        </div>
+                        <div className= {!this.state.login ? 'dont-display' : 'display-login'}>
+                            <input 
+                            placeholder='Email'
+                            type='text'
+                            name='email'
+                            onChange={this.handleChange}
+                            value={this.state.email}
+                            />
+                            <input 
+                            placeholder='Password'
+                            type='password'
+                            name='password'
+                            onChange={this.handleChange}
+                            value={this.state.password}
+                            />
+                            <button onClick={this.login}>Login</button>
+                        </div>
                     </div>
                 </div>
             </div>
