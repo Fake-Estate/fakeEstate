@@ -1,0 +1,4 @@
+CREATE TABLE style (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR
+)
