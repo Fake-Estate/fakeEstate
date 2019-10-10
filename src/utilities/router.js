@@ -7,11 +7,13 @@ import AgentAuth from '../components/AgentAuth/AgentAuth'
 import AgentProfile from '../components/AgentProfile/AgentProfile'
 
 
+
 export default(
     <Switch>
         <Route exact path = '/' component = {Landing} />
         <Route path = '/results' component = {Results} />
         <Route path = '/portal' component = {AgentAuth} />
         <Route path = '/profile/agent' component = {AgentProfile} />
+        
     </Switch>
 )
