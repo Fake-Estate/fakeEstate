@@ -1,3 +1,7 @@
+const getStyles = async (req, res) => {
+    const styles = await req.app.get('db').style.get_style()
+        return res.status(200).send(styles)
+}
 const create = async(req, res) => {
     try {
         const db = req.app.get('db')
@@ -19,7 +23,6 @@ const create = async(req, res) => {
 const getListings = async(req, res) => {
     try {
         const db = req.app.get('db')
-
         let response = await db.listing.get_all_listings()
         res.send(response)
     } catch (error) {
@@ -36,6 +39,7 @@ const getListings = async(req, res) => {
 
 
 module.exports = {
+    getStyles,
     create,
     getListings
 }
