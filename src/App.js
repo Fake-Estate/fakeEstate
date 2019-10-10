@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
+import Navbar from './components/Navbar/Navbar'
 
 import routes from './utilities/router'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
+
+// Stylesheets
+import './reset.css'
+
 
 class App extends Component {
   static propTypes = {
@@ -13,6 +18,7 @@ class App extends Component {
   render(){
   return (
     <div className="App">
+      <Navbar />
       {routes}
     </div>
   );

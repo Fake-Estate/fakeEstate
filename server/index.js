@@ -31,7 +31,6 @@ massive(CONNECTION_STRING).then(db => {
 // Realtor Endpoints
 app.post('/api/realtor/create', realCtrl.register)
 app.post('/api/realtor/login', realCtrl.login)
-app.get('/api/realtor/logout', realCtrl.logout)
 
 // User Endpoints
 app.post('/api/profile/create', userCtrl.register)

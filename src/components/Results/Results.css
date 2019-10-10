@@ -1,0 +1,13 @@
+.main-part{
+    display:flex;
+    justify-content: flex-end;
+}
+
+
+.box-map{
+    height:30vh;
+    width:40vw;
+    
+
+}
+
