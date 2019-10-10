@@ -40,5 +40,6 @@ app.get('/api/profile/logout', userCtrl.logout)
 
 // Listing Endpoints
 app.post('/api/auth/listing/create', authMidd.authenticateUser, createCtrl.create )
+app.get('/api/listings', createCtrl.getListings)
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
