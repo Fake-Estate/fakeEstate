@@ -279,7 +279,7 @@ module.exports = {
     getIntFeatures,
     insertIntFeatures,
     getOtherFeatures,
-    insertOtherFeatures
+    insertOtherFeatures,
     getExtFeatures,
     createExtFeatures,
     getHoa,
