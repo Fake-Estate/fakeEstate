@@ -1,5 +1,5 @@
 const getStyles = async (req, res) => {
-    try{
+    try {
         const styles = await req.app.get('db').style.get_style()
         return res.status(200).send(styles)
     } catch (error) {
@@ -12,7 +12,6 @@ const getStyles = async (req, res) => {
 const insertStyle = async (req, res) => {
     try {
         const {id} = req.params
-        console.log(typeof id)
         const {style_id} = req.body
         const styles = await req.app.get('db').style.create_style({style_id, id:+id})
         res.status(200).send(styles)
@@ -22,6 +21,25 @@ const insertStyle = async (req, res) => {
         res.status(500).send(error)
     }
 
+}
+
+const deleteStyle = async (req, res) => {
+    try {
+        console.log('hit', req.params)
+        const listing_id = req.params.id
+        const style_id = req.query.style_id
+        if(listing_id && style_id){
+            await req.app.get('db').style.delete_style({listing_id, style_id})
+            res.sendStatus(200)
+        } else {
+            res.sendStatus(204)
+        }
+        
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
 }
 
 const getRoomsIncluded = async (req, res) => {
@@ -175,6 +193,7 @@ const getIntFeatures = async (req, res) => {
         if(error) throw error
         console.log('There was an error', error)}
     }
+      
 
 const getExtFeatures = async(req,res) => {
     try{
@@ -284,9 +303,39 @@ const deleteType = async(req,res) => {
 
 }
 
+const getInclusions = async (req, res) => {
+    try {
+        const db= req.app.get('db')
+        let response = await db.inclusions.get_inclusions()
+        res.send(response)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
+const insertInclusions = async (req, res) => {
+    try {
+        const db = req.app.get('db')
+        const {id} = req.params
+        const {inclusions_id} = req.body
+
+        let response = await db.inclusions.create_inclusions({inclusions_id, id: +id})
+        res.send(response)
+    } catch (error) {
+        if(error) throw error
+        console.log('There has been an error', error)
+        res.status(500).send(error)
+    }
+}
+
+
+
 module.exports = {
     getStyles,
     insertStyle,
+    deleteStyle,
     create,
     getListings,
     getListingById,
@@ -305,5 +354,7 @@ module.exports = {
     createExtFeatures,
     getHoa,
     createHoa,
-    deleteType
+    deleteType,
+    getInclusions,
+    insertInclusions
 }
