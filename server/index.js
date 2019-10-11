@@ -49,9 +49,9 @@ app.put('/api/auth/listing/edit/:id', authMidd.authenticateUser, createCtrl.edit
 app.delete('/api/auth/listing/delete/:id', authMidd.authenticateUser, createCtrl.deleteListing)
 
 // Type Endpoints
-app.get('/api/auth/listing/type', createCtrl.getType)
-app.post('/api/auth/listing/create/type/:id', createCtrl.createType)
-app.delete('/api/auth/listing/:id', createCtrl.deleteType)
+app.get('/api/auth/listing/type', authMidd.authenticateUser, createCtrl.getType)
+app.post('/api/auth/listing/create/type/:id', authMidd.authenticateUser, createCtrl.createType)
+app.delete('/api/auth/listing/type/:id', authMidd.authenticateUser, createCtrl.deleteType)
 
 //Styles
 app.get('/api/auth/listing/style', authMidd.authenticateUser, createCtrl.getStyles)
@@ -71,16 +71,17 @@ app.get('/api/auth/listing/roomsinc', authMidd.authenticateUser, createCtrl.getR
 app.post('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.insertRooms)
 
 // Ext Feature Endpoints
-app.get('/api/auth/listing/extfeature', createCtrl.getExtFeatures)
-app.post('/api/auth/listing/create/extfeature/:id', createCtrl.createExtFeatures)
+app.get('/api/auth/listing/extfeature', authMidd.authenticateUser, createCtrl.getExtFeatures)
+app.post('/api/auth/listing/create/extfeature/:id', authMidd.authenticateUser, createCtrl.createExtFeatures)
 
 // Hoa Info 
-app.get('/api/auth/listing/hoa', createCtrl.getHoa)
-app.post('/api/auth/listing/create/hoa/:id', createCtrl.createHoa)
+app.get('/api/auth/listing/hoa', authMidd.authenticateUser, createCtrl.getHoa)
+app.post('/api/auth/listing/create/hoa/:id', authMidd.authenticateUser, createCtrl.createHoa)
 
 // Inclusions 
 app.get('/api/auth/listing/inclusions', authMidd.authenticateUser, createCtrl.getInclusions)
 app.post('/api/auth/listing/inclusions/:id', authMidd.authenticateUser, createCtrl.insertInclusions)
+app.delete('/api/auth/listing/inclusions/:id', authMidd.authenticateUser, createCtrl.deleteInclusions)
 
 
 

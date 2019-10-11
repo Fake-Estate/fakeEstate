@@ -330,6 +330,24 @@ const insertInclusions = async (req, res) => {
     }
 }
 
+const deleteInclusions = async(req,res) => {
+    try{
+    const listing_id = req.params.id
+    const inclusions_id = req.query.inclusions_id
+    console.log(inclusions_id)
+    if(listing_id && inclusions_id){
+    await req.app.get('db').inclusions.delete_inclusions({listing_id, inclusions_id})
+        res.sendStatus(200)
+    }else {
+        res.sendStatus(204)
+    }
+    } catch (error) {
+        if(error) throw error
+        console.log('You were Excluded', error)
+        res.status(500).send(error)
+    }
+}
+
 
 
 module.exports = {
@@ -356,5 +374,6 @@ module.exports = {
     createHoa,
     deleteType,
     getInclusions,
-    insertInclusions
+    insertInclusions,
+    deleteInclusions
 }
