@@ -1,7 +1,29 @@
 const getStyles = async (req, res) => {
-    const styles = await req.app.get('db').style.get_style()
+    try{
+        const styles = await req.app.get('db').style.get_style()
         return res.status(200).send(styles)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
 }
+
+const insertStyle = async (req, res) => {
+    try {
+        const {id} = req.params
+        console.log(typeof id)
+        const {style_id} = req.body
+        const styles = await req.app.get('db').style.create_style({style_id, id:+id})
+        res.status(200).send(styles)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+
+}
+
 const create = async(req, res) => {
     try {
         const db = req.app.get('db')
@@ -93,27 +115,42 @@ const deleteListing = (req, res) => {
 }
 const getType = async(req, res) => {
     try {
-        const db = req.app.get('db')
-
+        const db = await req.app.get('db')
         let response = await db.type.get_type()
         res.send(response)
+         
     } catch(error) {
         if(error) throw error
         console.log('Abort, Abort', error)
+        res.status(500).send(error)
+    }
+}
+
+const createType = async(req,res) => {
+    try{
+        const {id} =req.params
+        const {type_id} = req.body
+        const db = await req.app.get('db')
+        let response = await db.type.create_type({type_id,id:+id})
+        res.send(response)
+    } catch(error) {
+        if(error) throw error
+        console.log('ACCESS DENIED',error)
+        res.status(500).send(error)
     }
 }
 
 
 
-
-
 module.exports = {
     getStyles,
+    insertStyle,
     create,
     getListings,
     getListingById,
     getRealtorsListings,
     editListing,
     deleteListing,
-    getType
+    getType,
+    createType
 }
