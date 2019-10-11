@@ -25,7 +25,6 @@ const insertStyle = async (req, res) => {
 
 const deleteStyle = async (req, res) => {
     try {
-        console.log('hit', req.params)
         const listing_id = req.params.id
         const style_id = req.query.style_id
         if(listing_id && style_id){
@@ -208,6 +207,24 @@ const getExtFeatures = async(req,res) => {
     }
 }
 
+const deleteExtFeatures = async (req, res) => {
+    try {
+        const listing_id = req.params.id
+        const exterior_features_id = req.query.exterior_features_id
+        if(listing_id && exterior_features_id){
+            await req.app.get('db').ext_features.delete_extfeature({listing_id, exterior_features_id})
+            res.sendStatus(200)
+        } else {
+            res.sendStatus(204)
+        }
+        
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
 const insertIntFeatures = async (req, res) => {
     try {
         const {id} = req.params
@@ -257,6 +274,24 @@ const createHoa = async(req,res) => {
     } catch(error) {
         if(error) throw error
         console.log('Server has successfully failed', error)
+    }
+}
+
+const deleteHoa = async (req, res) => {
+    try {
+        const listing_id = req.params.id
+        const hoa_info_id = req.query.hoa_info_id
+        if(listing_id && hoa_info_id){
+            await req.app.get('db').hoa.delete_hoa({listing_id, hoa_info_id})
+            res.sendStatus(200)
+        } else {
+            res.sendStatus(204)
+        }
+        
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
     }
 }
 
@@ -337,5 +372,7 @@ module.exports = {
     getHoa,
     createHoa,
     getInclusions,
-    insertInclusions
+    insertInclusions,
+    deleteExtFeatures,
+    deleteHoa
 }
