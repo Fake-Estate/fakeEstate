@@ -5,7 +5,8 @@ export default class AgentProfile extends Component {
     render() {
         return (
             <div>
-                <Link to='/profile/agent/create'>Style Mapped</Link>
+                Agent Profile
+                <Link to='/profile/agent/listing/create'>Create A Listing</Link>
             </div>
         )
     }

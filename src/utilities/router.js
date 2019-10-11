@@ -14,7 +14,7 @@ export default(
             <Route exact path = '/' component = {Landing} />
             <Route path = '/results' component = {Results} />
             <Route path = '/portal' component = {AgentAuth} />
-            <Route path = '/profile/agent' component = {AgentProfile} />
+            <Route exact path = '/profile/agent' component = {AgentProfile} />
             <Route path = '/profile/agent/listing/create' component = {CreateListing} />
         </Switch>
 )

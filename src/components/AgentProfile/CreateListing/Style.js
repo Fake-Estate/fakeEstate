@@ -34,6 +34,7 @@ export default class Style extends Component {
         })
         return (
             <div>
+                <h1>Styles</h1>
                 {mappedStyles}
             </div>
         )
