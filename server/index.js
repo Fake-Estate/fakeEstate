@@ -51,6 +51,7 @@ app.delete('/api/auth/listing/delete/:id', authMidd.authenticateUser, createCtrl
 // Type Endpoints
 app.get('/api/auth/listing/type', createCtrl.getType)
 app.post('/api/auth/listing/create/type/:id', createCtrl.createType)
+app.delete('/api/auth/listing/:id', createCtrl.deleteType)
 
 //Styles
 app.get('/api/auth/listing/style', authMidd.authenticateUser, createCtrl.getStyles)
