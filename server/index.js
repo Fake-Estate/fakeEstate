@@ -55,6 +55,7 @@ app.post('/api/auth/listing/create/type/:id', createCtrl.createType)
 //Styles
 app.get('/api/auth/listing/style', authMidd.authenticateUser, createCtrl.getStyles)
 app.post('/api/auth/listing/style/:id', authMidd.authenticateUser, createCtrl.insertStyle)
+app.delete('/api/auth/listing/:id', authMidd.authenticateUser, createCtrl.deleteStyle)
 
 //Interior Features
 app.get('/api/auth/listing/intfeatures', authMidd.authenticateUser, createCtrl.getIntFeatures)
@@ -75,6 +76,10 @@ app.post('/api/auth/listing/create/extfeature/:id', createCtrl.createExtFeatures
 // Hoa Info 
 app.get('/api/auth/listing/hoa', createCtrl.getHoa)
 app.post('/api/auth/listing/create/hoa/:id', createCtrl.createHoa)
+
+// Inclusions 
+app.get('/api/auth/listing/inclusions', authMidd.authenticateUser, createCtrl.getInclusions)
+app.post('/api/auth/listing/inclusions/:id', authMidd.authenticateUser, createCtrl.insertInclusions)
 
 
 
