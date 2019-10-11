@@ -167,6 +167,13 @@ const createType = async(req,res) => {
     }
 }
 
+const getIntFeatures = async (req, res) => {
+    try{
+        const intFeatures = await req.app.get('db').int_features.get_int_features()
+        return res.status(200).send(intFeatures)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
 const getExtFeatures = async(req,res) => {
     try{
         const db = await req.app.get('db')
@@ -179,6 +186,19 @@ const getExtFeatures = async(req,res) => {
     }
 }
 
+const insertIntFeatures = async (req, res) => {
+    try {
+        const {id} = req.params
+        const {interior_features_id} = req.body
+        const intFeatures = await req.app.get('db').int_features.create_int_features({interior_features_id, id:+id})
+        res.status(200).send(intFeatures)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+
+}
 const createExtFeatures = async(req,res) => {
     try{
         const {id} =req.params
@@ -219,6 +239,29 @@ const createHoa = async(req,res) => {
 }
 
 
+const getOtherFeatures = async (req, res) => {
+    try{
+        const otherFeatures = await req.app.get('db').other_features.get_other_features()
+        return res.status(200).send(otherFeatures)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
+const insertOtherFeatures = async (req, res) => {
+    try {
+        const {id} = req.params
+        const {other_features_id} = req.body
+        const otherFeatures = await req.app.get('db').other_features.create_other_features({other_features_id, id:+id})
+        res.status(200).send(otherFeatures)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
 
 module.exports = {
     getStyles,
@@ -233,6 +276,10 @@ module.exports = {
     createType,
     getRoomsIncluded,
     insertRooms,
+    getIntFeatures,
+    insertIntFeatures,
+    getOtherFeatures,
+    insertOtherFeatures
     getExtFeatures,
     createExtFeatures,
     getHoa,
