@@ -191,10 +191,9 @@ const getIntFeatures = async (req, res) => {
         return res.status(200).send(intFeatures)
     } catch (error) {
         if(error) throw error
-        console.log('There was an error', error)
-
+        console.log('There was an error', error)}
     }
-}
+      
 
 const getExtFeatures = async(req,res) => {
     try{
@@ -274,8 +273,8 @@ const getOtherFeatures = async (req, res) => {
 
 const insertOtherFeatures = async (req, res) => {
     try {
-        const {id} = req.params
-        const {other_features_id} = req.body
+        const {id} = +req.params.id
+        const {other_features_id} = +req.body.type_id
         const otherFeatures = await req.app.get('db').other_features.create_other_features({other_features_id, id:+id})
         res.status(200).send(otherFeatures)
     } catch (error) {
@@ -283,6 +282,25 @@ const insertOtherFeatures = async (req, res) => {
         console.log('There was an error', error)
         res.status(500).send(error)
     }
+}
+
+const deleteType = async(req,res) => {
+    try{
+    const listing_id = req.params.id
+    const type_id = req.query.type_id
+    if(listing_id && type_id){
+        const db = await req.app.get('db').type.delete_type({listing_id, type_id})
+        res.sendStatus(200)
+    }else {
+        res.sendStatus(204)
+    }
+    } catch (error) {
+        if(error) throw error
+        console.log('Ew, Sick, Gross', error)
+        res.status(500).send(error)
+    }
+    
+
 }
 
 const getInclusions = async (req, res) => {
@@ -312,6 +330,24 @@ const insertInclusions = async (req, res) => {
     }
 }
 
+const deleteInclusions = async(req,res) => {
+    try{
+    const listing_id = req.params.id
+    const inclusions_id = req.query.inclusions_id
+    console.log(inclusions_id)
+    if(listing_id && inclusions_id){
+    await req.app.get('db').inclusions.delete_inclusions({listing_id, inclusions_id})
+        res.sendStatus(200)
+    }else {
+        res.sendStatus(204)
+    }
+    } catch (error) {
+        if(error) throw error
+        console.log('You were Excluded', error)
+        res.status(500).send(error)
+    }
+}
+
 
 
 module.exports = {
@@ -336,6 +372,8 @@ module.exports = {
     createExtFeatures,
     getHoa,
     createHoa,
+    deleteType,
     getInclusions,
-    insertInclusions
+    insertInclusions,
+    deleteInclusions
 }
