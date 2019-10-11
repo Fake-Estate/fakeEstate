@@ -71,6 +71,12 @@ app.get('/api/auth/listing/roomsinc', authMidd.authenticateUser, createCtrl.getR
 app.post('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.insertRooms)
 
 // Ext Feature Endpoints
+app.get('/api/auth/listing/extfeature', createCtrl.getExtFeatures)
+app.post('/api/auth/listing/create/extfeature/:id', createCtrl.createExtFeatures)
+app.delete('/api/auth/listing/extfeatures/:id', authMidd.authenticateUser, createCtrl.deleteExtFeatures)
+
+// Hoa Info 
+app.delete('/api/auth/listing/hoa/:id', authMidd.authenticateUser, createCtrl.deleteHoa)
 app.get('/api/auth/listing/extfeature', authMidd.authenticateUser, createCtrl.getExtFeatures)
 app.post('/api/auth/listing/create/extfeature/:id', authMidd.authenticateUser, createCtrl.createExtFeatures)
 
