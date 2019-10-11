@@ -41,13 +41,16 @@ app.get('/api/profile/logout', userCtrl.logout)
 // Listing Endpoints
 app.post('/api/listing/create', authMidd.authenticateUser, createCtrl.create )
 app.post('/api/auth/listing/create', authMidd.authenticateUser, createCtrl.create )
-app.post('/api/auth/listing/create/type/:id', createCtrl.createType)
+
 app.get('/api/listings', createCtrl.getListings)
 app.get('/api/listing/:id', createCtrl.getListingById)
 app.get('/api/auth/listings', authMidd.authenticateUser, createCtrl.getRealtorsListings)
 app.put('/api/auth/listing/edit/:id', authMidd.authenticateUser, createCtrl.editListing)
 app.delete('/api/auth/listing/delete/:id', authMidd.authenticateUser, createCtrl.deleteListing)
+
+// Type Endpoints
 app.get('/api/auth/listing/type', createCtrl.getType)
+app.post('/api/auth/listing/create/type/:id', createCtrl.createType)
 
 //Styles
 app.get('/api/auth/listing/style', authMidd.authenticateUser, createCtrl.getStyles)
@@ -64,6 +67,14 @@ app.post('/api/auth/listing/otherfeatures/:id', authMidd.authenticateUser, creat
 // Rooms Included Endpoints
 app.get('/api/auth/listing/roomsinc', authMidd.authenticateUser, createCtrl.getRoomsIncluded)
 app.post('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.insertRooms)
+
+// Ext Feature Endpoints
+app.get('/api/auth/listing/extfeature', createCtrl.getExtFeatures)
+app.post('/api/auth/listing/create/extfeature/:id', createCtrl.createExtFeatures)
+
+// Hoa Info 
+app.get('/api/auth/listing/hoa', createCtrl.getHoa)
+app.post('/api/auth/listing/create/hoa/:id', createCtrl.createHoa)
 
 
 
