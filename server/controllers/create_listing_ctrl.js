@@ -167,6 +167,57 @@ const createType = async(req,res) => {
     }
 }
 
+const getExtFeatures = async(req,res) => {
+    try{
+        const db = await req.app.get('db')
+        let response = await db.ext_features.get_extfeature()
+        res.send(response)
+    } catch(error) {
+        if(error) throw error
+        console.log('This is not an error...JK',error)
+        res.status(500).send(error)
+    }
+}
+
+const createExtFeatures = async(req,res) => {
+    try{
+        const {id} =req.params
+        const {extfeatures_id} = req.body
+        const db = await req.app.get('db')
+        let response = await db.ext_features.create_extfeature({extfeatures_id,id:+id})
+        res.send(response)
+    } catch(error) {
+        if(error) throw error
+        console.log('Insert witty error message here',error)
+        res.status(500).send(error)
+    }
+}
+
+const getHoa = async(req,res) => {
+    try{
+        const db = await req.app.get('db')
+        let response = await db.hoa.get_hoa()
+        res.send(response)
+    } catch(error) {
+        if(error) throw error
+        console.log('Booooo', error)
+        res.status(500).send(error)
+    }
+}
+
+const createHoa = async(req,res) => {
+    try{
+        const {id} = req.params
+        const {hoa_info_id} = req.body
+        const db = await req.app.get('db')
+        let response = await db.hoa.create_hoa({hoa_info_id,id:+id})
+        res.send(response)
+    } catch(error) {
+        if(error) throw error
+        console.log('Server has successfully failed', error)
+    }
+}
+
 
 
 module.exports = {
@@ -181,5 +232,9 @@ module.exports = {
     getType,
     createType,
     getRoomsIncluded,
-    insertRooms
+    insertRooms,
+    getExtFeatures,
+    createExtFeatures,
+    getHoa,
+    createHoa
 }
