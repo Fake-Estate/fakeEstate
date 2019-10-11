@@ -158,15 +158,16 @@ class Navbar extends Component {
                             type='password'
                             name='password'
                             onChange={this.handleChange}
-                            // value={this.state.password}
+                            value={this.state.password}
                             />
                             <button onClick={this.login}>Login</button>
-                            <div>
-                                <h1>{this.props.firstName}</h1>
-                            </div>
                         </div>
                     </div>
                 </div>
+                    <div>
+                        <h1>{this.props.first_name}</h1>
+                        <h1>{this.props.last_name}</h1>
+                    </div>
             </div>
         )
     }
