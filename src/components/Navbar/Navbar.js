@@ -3,8 +3,9 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import * as Icon from 'react-feather'
 import burger from './Hamburgaler.svg'
-import { slideNav } from '../../redux/reducer'
+import { slideNav } from '../../redux/reducers/reducer'
 import { connect } from 'react-redux'
+import {realtorInfo, logoutUser} from './../../redux/reducers/adminReducer'
 
 import './Navbar.css'
 
@@ -157,9 +158,12 @@ class Navbar extends Component {
                             type='password'
                             name='password'
                             onChange={this.handleChange}
-                            value={this.state.password}
+                            // value={this.state.password}
                             />
                             <button onClick={this.login}>Login</button>
+                            <div>
+                                <h1>{this.props.firstName}</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,10 +173,12 @@ class Navbar extends Component {
 }
 function mapStateToProps(state){
     return{
-        username: state.username,
-        profile_pic: state.profile_pic,
+        first_name: state.first_name,
+        last_name: state.last_name,
+        email: state.email,
+        is_admin: state.is_admin,
         slide: state.slide
     }
 }
 
-export default connect(mapStateToProps,{slideNav})(Navbar)
+export default connect(mapStateToProps,{slideNav, realtorInfo, logoutUser})(Navbar)
