@@ -174,6 +174,9 @@ const getIntFeatures = async (req, res) => {
     } catch (error) {
         if(error) throw error
         console.log('There was an error', error)
+    }
+}
+
 const getExtFeatures = async(req,res) => {
     try{
         const db = await req.app.get('db')
@@ -279,7 +282,7 @@ module.exports = {
     getIntFeatures,
     insertIntFeatures,
     getOtherFeatures,
-    insertOtherFeatures
+    insertOtherFeatures,
     getExtFeatures,
     createExtFeatures,
     getHoa,
