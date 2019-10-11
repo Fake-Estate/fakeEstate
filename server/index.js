@@ -76,6 +76,10 @@ app.post('/api/auth/listing/create/extfeature/:id', createCtrl.createExtFeatures
 app.get('/api/auth/listing/hoa', createCtrl.getHoa)
 app.post('/api/auth/listing/create/hoa/:id', createCtrl.createHoa)
 
+// Inclusions 
+app.get('/api/auth/listing/inclusions', authMidd.authenticateUser, createCtrl.getInclusions)
+app.post('/api/auth/listing/inclusions/:id', authMidd.authenticateUser, createCtrl.insertInclusions)
+
 
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
