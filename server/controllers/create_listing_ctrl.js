@@ -285,6 +285,35 @@ const insertOtherFeatures = async (req, res) => {
     }
 }
 
+const getInclusions = async (req, res) => {
+    try {
+        const db= req.app.get('db')
+        let response = await db.inclusions.get_inclusions()
+        res.send(response)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
+const insertInclusions = async (req, res) => {
+    try {
+        const db = req.app.get('db')
+        const {id} = req.params
+        const {inclusions_id} = req.body
+
+        let response = await db.inclusions.create_inclusions({inclusions_id, id: +id})
+        res.send(response)
+    } catch (error) {
+        if(error) throw error
+        console.log('There has been an error', error)
+        res.status(500).send(error)
+    }
+}
+
+
+
 module.exports = {
     getStyles,
     insertStyle,
@@ -306,5 +335,7 @@ module.exports = {
     getExtFeatures,
     createExtFeatures,
     getHoa,
-    createHoa
+    createHoa,
+    getInclusions,
+    insertInclusions
 }
