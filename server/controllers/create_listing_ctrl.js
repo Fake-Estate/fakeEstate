@@ -24,6 +24,33 @@ const insertStyle = async (req, res) => {
 
 }
 
+const getRoomsIncluded = async (req, res) => {
+    try {
+        const db= req.app.get('db')
+        let response = await db.rooms_included.get_rooms_included()
+        res.send(response)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+} 
+
+const insertRooms = async (req, res) => {
+    try {
+        const db = req.app.get('db')
+        const {id} = req.params
+        const {rooms_included_id} = req.body
+
+        let response = await db.rooms_included.create_rooms_included({rooms_included_id, id: +id})
+        res.send(response)
+    } catch (error) {
+        if(error) throw error
+        console.log('There has been an error', error)
+        res.status(500).send(error)
+    }
+}
+
 const create = async(req, res) => {
     try {
         const db = req.app.get('db')
@@ -152,5 +179,7 @@ module.exports = {
     editListing,
     deleteListing,
     getType,
-    createType
+    createType,
+    getRoomsIncluded,
+    insertRooms
 }

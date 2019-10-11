@@ -42,7 +42,6 @@ app.get('/api/profile/logout', userCtrl.logout)
 app.get('/api/auth/listing/style', authMidd.authenticateUser, createCtrl.getStyles)
 app.post('/api/listing/create', authMidd.authenticateUser, createCtrl.create )
 app.post('/api/auth/listing/style/:id', createCtrl.insertStyle)
-app.post('/api/listing/create', authMidd.authenticateUser, )
 app.post('/api/auth/listing/create', authMidd.authenticateUser, createCtrl.create )
 app.post('/api/auth/listing/create/type/:id', createCtrl.createType)
 app.get('/api/listings', createCtrl.getListings)
@@ -51,6 +50,10 @@ app.get('/api/auth/listings', authMidd.authenticateUser, createCtrl.getRealtorsL
 app.put('/api/auth/listing/edit/:id', authMidd.authenticateUser, createCtrl.editListing)
 app.delete('/api/auth/listing/delete/:id', authMidd.authenticateUser, createCtrl.deleteListing)
 app.get('/api/auth/listing/type', createCtrl.getType)
+
+// Rooms Included Endpoints
+app.get('/api/auth/listing/roomsinc', authMidd.authenticateUser, createCtrl.getRoomsIncluded)
+app.post('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.insertRooms)
 
 
 
