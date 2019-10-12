@@ -60,14 +60,17 @@ app.delete('/api/auth/listing/:id', authMidd.authenticateUser, createCtrl.delete
 //Interior Features
 app.get('/api/auth/listing/intfeatures', authMidd.authenticateUser, createCtrl.getIntFeatures)
 app.post('/api/auth/listing/intfeatures/:id', authMidd.authenticateUser, createCtrl.insertIntFeatures)
+app.delete('/api/auth/listing/intfeatures/:id', authMidd.authenticateUser, createCtrl.deleteIntFeatures)
 
 //Other Features
 app.get('/api/auth/listing/otherfeatures', authMidd.authenticateUser, createCtrl.getOtherFeatures)
 app.post('/api/auth/listing/otherfeatures/:id', authMidd.authenticateUser, createCtrl.insertOtherFeatures)
+app.delete('/api/auth/listing/otherfeatures/:id', authMidd.authenticateUser, createCtrl.deleteOtherFeatures)
 
 // Rooms Included Endpoints
 app.get('/api/auth/listing/roomsinc', authMidd.authenticateUser, createCtrl.getRoomsIncluded)
 app.post('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.insertRooms)
+app.delete('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.deleteRooms)
 
 // Ext Feature Endpoints
 app.get('/api/auth/listing/extfeature', createCtrl.getExtFeatures)
