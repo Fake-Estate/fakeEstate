@@ -71,7 +71,7 @@ app.get('/api/auth/listing/roomsinc', authMidd.authenticateUser, createCtrl.getR
 app.post('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.insertRooms)
 
 // Ext Feature Endpoints
-app.get('/api/auth/listing/extfeature', createCtrl.getExtFeatures)
+app.get('/api/auth/listing/extfeature', authMidd.authenticateUser, createCtrl.getExtFeatures)
 app.post('/api/auth/listing/create/extfeature/:id', createCtrl.createExtFeatures)
 app.delete('/api/auth/listing/extfeatures/:id', authMidd.authenticateUser, createCtrl.deleteExtFeatures)
 
@@ -89,6 +89,7 @@ app.get('/api/auth/listing/inclusions', authMidd.authenticateUser, createCtrl.ge
 app.post('/api/auth/listing/inclusions/:id', authMidd.authenticateUser, createCtrl.insertInclusions)
 app.delete('/api/auth/listing/inclusions/:id', authMidd.authenticateUser, createCtrl.deleteInclusions)
 
+// Search
 
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
