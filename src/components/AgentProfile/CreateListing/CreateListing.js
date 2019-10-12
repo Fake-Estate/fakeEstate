@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default class CreateListing extends Component {
     constructor(){
@@ -24,8 +24,25 @@ export default class CreateListing extends Component {
         })
     }
 
+    createListing = () => {
+        const {mls, address, city, state, square_footage, bedrooms, bathrooms, price, description} = this.state
+        axios.post('/api/auth/listing/create', {mls, address, city, state, square_footage, bedrooms, bathrooms, price, description}).then(() => {
+            this.setState = ({
+                mls: '',
+                address: '',
+                city: '',
+                state: '',
+                square_footage: '',
+                bedrooms: '',
+                bathrooms: '',
+                price: '',
+                description: ''
+            })
+            // this.props.history.push()
+        }).catch(err => console.log(err))
+    }
+
     render(){
-        console.log(this.state)
         return(
             <div className='createListing'>
                 <div className='box'>
@@ -93,7 +110,7 @@ export default class CreateListing extends Component {
                         value={this.state.description}
                         className='description input'
                         />
-                    <button>Continue</button>
+                    <button onClick={this.createListing}>Continue</button>
                 </div>
             </div>
         )
