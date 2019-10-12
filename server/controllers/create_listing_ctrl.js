@@ -209,10 +209,9 @@ const getIntFeatures = async (req, res) => {
         return res.status(200).send(intFeatures)
     } catch (error) {
         if(error) throw error
-        console.log('There was an error', error)
-
+        console.log('There was an error', error)}
     }
-}
+      
 
  const deleteIntFeatures = async (req, res) => {
     try {
@@ -241,6 +240,24 @@ const getExtFeatures = async(req,res) => {
     } catch(error) {
         if(error) throw error
         console.log('This is not an error...JK',error)
+        res.status(500).send(error)
+    }
+}
+
+const deleteExtFeatures = async (req, res) => {
+    try {
+        const listing_id = req.params.id
+        const exterior_features_id = req.query.exterior_features_id
+        if(listing_id && exterior_features_id){
+            await req.app.get('db').ext_features.delete_extfeature({listing_id, exterior_features_id})
+            res.sendStatus(200)
+        } else {
+            res.sendStatus(204)
+        }
+        
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
         res.status(500).send(error)
     }
 }
@@ -297,6 +314,24 @@ const createHoa = async(req,res) => {
     }
 }
 
+const deleteHoa = async (req, res) => {
+    try {
+        const listing_id = req.params.id
+        const hoa_info_id = req.query.hoa_info_id
+        if(listing_id && hoa_info_id){
+            await req.app.get('db').hoa.delete_hoa({listing_id, hoa_info_id})
+            res.sendStatus(200)
+        } else {
+            res.sendStatus(204)
+        }
+        
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
 
 const getOtherFeatures = async (req, res) => {
     try{
@@ -311,8 +346,8 @@ const getOtherFeatures = async (req, res) => {
 
 const insertOtherFeatures = async (req, res) => {
     try {
-        const {id} = req.params
-        const {other_features_id} = req.body
+        const {id} = +req.params.id
+        const {other_features_id} = +req.body.type_id
         const otherFeatures = await req.app.get('db').other_features.create_other_features({other_features_id, id:+id})
         res.status(200).send(otherFeatures)
     } catch (error) {
@@ -341,6 +376,25 @@ const deleteOtherFeatures = async (req, res) => {
     }
 }
 
+const deleteType = async(req,res) => {
+    try{
+    const listing_id = req.params.id
+    const type_id = req.query.type_id
+    if(listing_id && type_id){
+        const db = await req.app.get('db').type.delete_type({listing_id, type_id})
+        res.sendStatus(200)
+    }else {
+        res.sendStatus(204)
+    }
+    } catch (error) {
+        if(error) throw error
+        console.log('Ew, Sick, Gross', error)
+        res.status(500).send(error)
+    }
+    
+
+}
+
 const getInclusions = async (req, res) => {
     try {
         const db= req.app.get('db')
@@ -364,6 +418,24 @@ const insertInclusions = async (req, res) => {
     } catch (error) {
         if(error) throw error
         console.log('There has been an error', error)
+        res.status(500).send(error)
+    }
+}
+
+const deleteInclusions = async(req,res) => {
+    try{
+    const listing_id = req.params.id
+    const inclusions_id = req.query.inclusions_id
+    console.log(inclusions_id)
+    if(listing_id && inclusions_id){
+    await req.app.get('db').inclusions.delete_inclusions({listing_id, inclusions_id})
+        res.sendStatus(200)
+    }else {
+        res.sendStatus(204)
+    }
+    } catch (error) {
+        if(error) throw error
+        console.log('You were Excluded', error)
         res.status(500).send(error)
     }
 }
@@ -395,6 +467,10 @@ module.exports = {
     createExtFeatures,
     getHoa,
     createHoa,
+    deleteType,
     getInclusions,
-    insertInclusions
+    insertInclusions,
+    deleteExtFeatures,
+    deleteHoa,
+    deleteInclusions
 }
