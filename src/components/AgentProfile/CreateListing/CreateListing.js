@@ -1,22 +1,34 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import { realtorInfo } from '../../../redux/reducers/reducer'
+import { connect } from 'react-redux'
 
-import Style from './Style'
+// const STYLES = ["artDeco", "capeCod", "countryFrench", "colonial", "contemporary", "cottage", "craftsman", "dutchColonial", "farmhouse", "federal", "frenchProvincial", "georgianColonial", "greekRevival", "italianate", "log", "mediterranean", "midCenturyModern", "modern", "neoclassical", "prairie", "pueblo", "shingle", "southwest", "traditional", "ranch", "tudor", "victorian"]
 
-export default class CreateListing extends Component {
+class CreateListing extends Component {
     constructor(){
         super()
 
         this.state = {
-            mls: '',
+            mls: null,
             address: '',
             city: '',
             state: '',
-            square_footage: '',
-            bedrooms: '',
-            bathrooms: '',
-            price: '',
-            description: ''
+            zip: null,
+            acreage: null,
+            square_footage: null,
+            bedrooms: null,
+            bathrooms: null,
+            price: null,
+            description: '',
+            style_description: '',
+            type_description: '',
+            int_description: '',
+            ext_description: '',
+            other_description: '',
+            inclusions_description: '',
+            hoa_description: '',
+            rooms_description: ''
         }
     }
 
@@ -26,19 +38,34 @@ export default class CreateListing extends Component {
         })
     }
 
-    createListing = () => {
-        const {mls, address, city, state, square_footage, bedrooms, bathrooms, price, description} = this.state
-        axios.post('/api/auth/listing/create', {mls, address, city, state, square_footage, bedrooms, bathrooms, price, description}).then(() => {
+    createListing = (id) => {
+        console.log('hit', this.props)
+        const {mls, address, city, state, acreage,  square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description} = this.state
+
+        const body = {mls, address, city, state, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description}
+        axios.post(`/api/realtor/${id}/listing/create`, body)
+            .then(() => {
+                console.log(this.res)
             this.setState = ({
-                mls: '',
+                mls: null,
                 address: '',
                 city: '',
                 state: '',
-                square_footage: '',
-                bedrooms: '',
-                bathrooms: '',
-                price: '',
-                description: ''
+                zip: null,
+                square_footage: null,
+                acreage: null,
+                bedrooms: null,
+                bathrooms: null,
+                price: null,
+                description: '',
+                style_description: '',
+                type_description: '',
+                int_description: '',
+                ext_description: '',
+                other_description: '',
+                inclusions_description: '',
+                hoa_description: '',
+                rooms_description: ''
             })
             // this.props.history.push()
         }).catch(err => console.log(err))
@@ -49,74 +76,153 @@ export default class CreateListing extends Component {
             <div className='createListing'>
                 <div className='box'>
                     <h1>Create A Listing</h1>
-                    <input type='text'
+                    <input type='integer'
                         placeholder='MLS'
                         name='mls'
                         onChange={this.handleChange}
                         value={this.state.mls}
                         className='input'
-                        />
+                    />
                     <input type='text'
                         placeholder='Address'
                         name='address'
                         onChange={this.handleChange}
                         value={this.state.address}
                         className='input'
-                        />
+                    />
                     <input type='text'
                         placeholder='City'
                         name='city'
                         onChange={this.handleChange}
                         value={this.state.city}
                         className='input'
-                        />
+                    />
                     <input type='text'
                         placeholder='State'
                         name='state'
                         onChange={this.handleChange}
                         value={this.state.state}
                         className='input'
-                        />
-                    <input type='text'
+                    />
+                    <input type='integer'
+                        placeholder='Zip Code'
+                        name='zip'
+                        onChange={this.handleChange}
+                        value={this.state.zip}
+                        className='input'
+                    />
+                    <input type='integer'
+                        placeholder='Acreage'
+                        name='acreage'
+                        onChange={this.handleChange}
+                        value={this.state.acreage}
+                        className='input'
+                    />
+                    <input type='integer'
                         placeholder='Square Footage'
                         name='square_footage'
                         onChange={this.handleChange}
                         value={this.state.square_footage}
                         className='input'
-                        />
-                    <input type='text'
+                    />
+                    <input type='integer'
                         placeholder='Bedrooms'
                         name='bedrooms'
                         onChange={this.handleChange}
                         value={this.state.bedrooms}
                         className='input'
-                        />
-                    <input type='text'
+                    />
+                    <input type='integer'
                         placeholder='Bathrooms'
                         name='bathrooms'
                         onChange={this.handleChange}
                         value={this.state.bathrooms}
                         className='input'
-                        />
-                    <input type='text'
+                    />
+                    <input type='integer'
                         placeholder='Price'
                         name='price'
                         onChange={this.handleChange}
                         value={this.state.price}
                         className='input'
-                        />
-                    <input type='text'
-                        placeholder='Description'
+                    />
+                    <textarea type='text'
+                        placeholder='Description of Home'
                         name='description'
                         onChange={this.handleChange}
                         value={this.state.description}
                         className='description input'
-                        />
-                    <button onClick={this.createListing}>Continue</button>
+                    />
+                    <textarea 
+                        type='text'
+                        placeholder='Home Style Info'
+                        name='style_description'
+                        onChange={this.handleChange}
+                        value={this.state.style_description}
+                        className='description input'
+                    />
+                    <textarea 
+                        type='text'
+                        placeholder='Home Type Info'
+                        name='type_description'
+                        onChange={this.handleChange}
+                        value={this.state.type_description}
+                        className='description input'
+                    />
+                    <textarea 
+                        type='text'
+                        placeholder='Interior Features Info'
+                        name='int_description'
+                        onChange={this.handleChange}
+                        value={this.state.int_description}
+                        className='description input'
+                    />
+                    <textarea 
+                        type='text'
+                        placeholder='Exterior Features Info'
+                        name='ext_description'
+                        onChange={this.handleChange}
+                        value={this.state.ext_description}
+                        className='description input'
+                    />
+                    <textarea 
+                        type='text'
+                        placeholder='Home Inclusions Info'
+                        name='inclusions_description'
+                        onChange={this.handleChange}
+                        value={this.state.inclusions_description}
+                        className='description input'
+                    />
+                    <textarea 
+                        type='text'
+                        placeholder='HOA Info'
+                        name='hoa_description'
+                        onChange={this.handleChange}
+                        value={this.state.hoa_description}
+                        className='description input'
+                    />
+                    <textarea 
+                        type='text'
+                        placeholder='Rooms Features Info'
+                        name='rooms_description'
+                        onChange={this.handleChange}
+                        value={this.state.rooms_description}
+                        className='description input'
+                    />
+                    <button onClick={() => this.createListing(this.props.id)}>Create Listing</button>
 
-                    <Style />
+                        
+
                 </div>
             </div>
         )
     }
 }
+
+function mapStateToProps(state){
+    return{
+        id: state.id
+    }
+}
+
+export default connect(mapStateToProps, {realtorInfo})(CreateListing)
