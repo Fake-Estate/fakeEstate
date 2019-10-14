@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class AgentProfile extends Component {
+
+class AgentProfile extends Component {
     render() {
+        console.log(this.props)
         return (
             <div>
                 Agent Profile
@@ -11,3 +14,9 @@ export default class AgentProfile extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return state
+}
+
+
+export default connect(mapStateToProps)(AgentProfile)

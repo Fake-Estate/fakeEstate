@@ -29,7 +29,8 @@ class Navbar extends Component {
  
     handleRegisterToggle = () => {
         this.setState({
-            userRegister: !this.state.userRegister
+            userRegister: !this.state.userRegister,
+            login: false
          })
     } 
 
@@ -40,7 +41,8 @@ class Navbar extends Component {
 
     handleLoginToggle = () => {
         this.setState({
-            login: !this.state.login
+            login: !this.state.login,
+            userRegister: false
          })
     } 
  
@@ -177,6 +179,7 @@ function mapStateToProps(state){
         last_name: state.last_name,
         email: state.email,
         is_admin: state.is_admin,
+        id: state.id,
         slide: state.slide
     }
 }

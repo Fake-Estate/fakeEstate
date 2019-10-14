@@ -13,6 +13,7 @@ const ADD_USER = 'ADD_USER'
 const SLIDE_NAV = 'SLIDE_NAV'
 
 export function realtorInfo(first_name, last_name, email, is_admin, id){
+    console.log('hit')
     return{
         type: REALTOR_INFO,
         payload: {first_name, last_name, email, is_admin, id}
