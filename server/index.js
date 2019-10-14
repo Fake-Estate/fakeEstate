@@ -81,6 +81,7 @@ app.get('/api/auth/listing/extfeature', authMidd.authenticateUser, createCtrl.ge
 app.post('/api/auth/listing/create/extfeature/:id', authMidd.authenticateUser, createCtrl.createExtFeatures)
 
 // Hoa Info 
+app.delete('/api/auth/listing/hoa/:id', authMidd.authenticateUser, createCtrl.deleteHoa)
 app.get('/api/auth/listing/hoa', authMidd.authenticateUser, createCtrl.getHoa)
 app.post('/api/auth/listing/create/hoa/:id', authMidd.authenticateUser, createCtrl.createHoa)
 
