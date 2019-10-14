@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 
+import Style from './Style'
+
 export default class CreateListing extends Component {
     constructor(){
         super()
@@ -111,6 +113,8 @@ export default class CreateListing extends Component {
                         className='description input'
                         />
                     <button onClick={this.createListing}>Continue</button>
+
+                    <Style />
                 </div>
             </div>
         )
