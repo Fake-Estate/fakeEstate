@@ -25,13 +25,15 @@ export default class AgentAuth extends Component {
 
     handleRegisterToggle = () => {
         this.setState({
-            register: !this.state.register
+            register: !this.state.register,
+            login: false
         })
     }
 
     handleLoginToggle = () => {
         this.setState({
-            login: !this.state.login
+            login: !this.state.login,
+            register: false
         })
     }
 

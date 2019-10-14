@@ -3,9 +3,8 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import * as Icon from 'react-feather'
 import burger from './Hamburgaler.svg'
-import { slideNav } from '../../redux/reducers/reducer'
+import { slideNav, realtorInfo, logoutUser } from '../../redux/reducers/reducer'
 import { connect } from 'react-redux'
-import {realtorInfo, logoutUser} from './../../redux/reducers/adminReducer'
 
 import './Navbar.css'
 
