@@ -24,7 +24,7 @@ export function searchByString(search){
 export function realtorInfo(first_name, last_name, email, is_admin, id){
     return{
         type: REALTOR_INFO,
-        payload: first_name, last_name, email, is_admin, id
+        payload: {first_name, last_name, email, is_admin, id}
     }
 }
 
@@ -57,9 +57,9 @@ export default function reducer(state = initialState, action){
             const {first_name, last_name, email, is_admin, id} = payload
             return {...state, first_name, last_name, email, is_admin, id}
         case LOGOUT_USER:
-            return {...initialState}
+            return {...state}
         case ADD_USER:
-            const myObj = Object.assign({}, state, {first_name:payload.first_name, last_name:payload.last_name, id: payload.id})
+            const myObj = Object.assign({}, state, {first_name:payload.first_name, last_name:payload.last_name})
             return myObj
         case SLIDE_NAV:
             return Object.assign({}, state, {slide: !action.payload.slide})

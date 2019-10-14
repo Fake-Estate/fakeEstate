@@ -1,4 +1,4 @@
 INSERT INTO listing 
-(mls, address, city, state, acreage, square_footage, bedrooms, bathrooms, price, realtor_id, description, zip)
-VALUES (${mls}, ${address}, ${city}, ${state}, ${acreage}, ${square_footage}, ${bedrooms}, ${bathrooms}, ${price}, ${id}, ${description}, ${zip})
-RETURNING id, mls, address, city, state, acreage, square_footage, bedrooms, bathrooms, price, realtor_id, description, zip
+(mls, address, city, state, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, realtor_id)
+VALUES (${mls}, ${address}, ${city}, ${state}, ${acreage}, ${square_footage}, ${bedrooms}, ${bathrooms}, ${price}, ${description}, ${zip}, ${style_description}, ${type_description}, ${int_description}, ${ext_description}, ${other_description}, ${inclusions_description}, ${hoa_description}, ${rooms_description}, ${id})
+RETURNING id, mls, address, city, state, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, realtor_id
