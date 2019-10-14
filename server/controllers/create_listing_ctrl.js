@@ -68,6 +68,25 @@ const insertRooms = async (req, res) => {
     }
 }
 
+const deleteRooms = async (req, res) => {
+    try {
+        console.log('hit')
+        const listing_id = req.params.id
+        const rooms_included_id = req.query.rooms_included_id
+        if(listing_id && rooms_included_id){
+            await req.app.get('db').rooms_included.delete_rooms_included({listing_id, rooms_included_id})
+            res.sendStatus(200)
+        } else {
+            res.status(204).send('No content here!')
+        }
+        
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
 const create = async(req, res) => {
     try {
         const db = req.app.get('db')
@@ -194,6 +213,25 @@ const getIntFeatures = async (req, res) => {
     }
       
 
+ const deleteIntFeatures = async (req, res) => {
+    try {
+        
+        const listing_id = req.params.id
+        const interior_features_id = req.query.intfeatures_id
+        if(listing_id && interior_features_id){
+            await req.app.get('db').int_features.delete_int_features({listing_id, interior_features_id})
+            res.sendStatus(200)
+        } else {
+            res.status(204).send('No content here!')
+        }
+        
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
 const getExtFeatures = async(req,res) => {
     try{
         const db = await req.app.get('db')
@@ -319,6 +357,25 @@ const insertOtherFeatures = async (req, res) => {
     }
 }
 
+const deleteOtherFeatures = async (req, res) => {
+    try {
+        console.log('hit')
+        const listing_id = req.params.id
+        const other_features_id = req.query.other_features_id
+        if(listing_id && other_features_id){
+            await req.app.get('db').other_features.delete_other_features({listing_id, other_features_id})
+            res.sendStatus(200)
+        } else {
+            res.status(204).send('No content here!')
+        }
+        
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
 const deleteType = async(req,res) => {
     try{
     const listing_id = req.params.id
@@ -399,10 +456,13 @@ module.exports = {
     createType,
     getRoomsIncluded,
     insertRooms,
+    deleteRooms,
     getIntFeatures,
     insertIntFeatures,
+    deleteIntFeatures,
     getOtherFeatures,
     insertOtherFeatures,
+    deleteOtherFeatures,
     getExtFeatures,
     createExtFeatures,
     getHoa,

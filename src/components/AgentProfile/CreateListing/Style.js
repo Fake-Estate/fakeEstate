@@ -20,13 +20,15 @@ export default class Style extends Component {
                 this.setState({
                     styles: styles.data
                 })
+            }).catch(error => {
+                console.log('Oops, nothing here!')
             })
     }
     
     render() {
-        const mappedStyles = this.state.styles.map((style, i) => {
+        const mappedStyles = this.state.styles.map((style) => {
             return (
-                <div style={style} key={i} >
+                <div style={style} key={style.id} >
                     <label>{style.name}</label>
                     <input type='checkbox' />
                 </div>

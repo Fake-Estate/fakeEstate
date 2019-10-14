@@ -9,6 +9,7 @@ const userCtrl = require('./controllers/users_ctrl')
 const realCtrl = require('./controllers/realtor_ctrl')
 const createCtrl = require('./controllers/create_listing_ctrl')
 const authMidd = require('./middleware/auth_middleware')
+const searchCtrl = require('./controllers/search_ctrl')
 
 const app = express()
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -29,7 +30,8 @@ massive(CONNECTION_STRING).then(db => {
     console.log(chalk.blue('Database Connected 🦄'))
 }).catch(error => console.log(chalk.bgRed('Connection Failed', error)))
 
-// Realtor Endpoints
+
+// Realtor Endpoints`   
 app.post('/api/realtor/create', realCtrl.register)
 app.post('/api/realtor/login', realCtrl.login)
 
@@ -61,14 +63,17 @@ app.delete('/api/auth/listing/:id', authMidd.authenticateUser, createCtrl.delete
 //Interior Features
 app.get('/api/auth/listing/intfeatures', authMidd.authenticateUser, createCtrl.getIntFeatures)
 app.post('/api/auth/listing/intfeatures/:id', authMidd.authenticateUser, createCtrl.insertIntFeatures)
+app.delete('/api/auth/listing/intfeatures/:id', authMidd.authenticateUser, createCtrl.deleteIntFeatures)
 
 //Other Features
 app.get('/api/auth/listing/otherfeatures', authMidd.authenticateUser, createCtrl.getOtherFeatures)
 app.post('/api/auth/listing/otherfeatures/:id', authMidd.authenticateUser, createCtrl.insertOtherFeatures)
+app.delete('/api/auth/listing/otherfeatures/:id', authMidd.authenticateUser, createCtrl.deleteOtherFeatures)
 
 // Rooms Included Endpoints
 app.get('/api/auth/listing/roomsinc', authMidd.authenticateUser, createCtrl.getRoomsIncluded)
 app.post('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.insertRooms)
+app.delete('/api/auth/listing/roomsinc/:id', authMidd.authenticateUser, createCtrl.deleteRooms)
 
 // Ext Feature Endpoints
 app.get('/api/auth/listing/extfeature', authMidd.authenticateUser, createCtrl.getExtFeatures)
@@ -80,16 +85,12 @@ app.delete('/api/auth/listing/hoa/:id', authMidd.authenticateUser, createCtrl.de
 app.get('/api/auth/listing/extfeature', authMidd.authenticateUser, createCtrl.getExtFeatures)
 app.post('/api/auth/listing/create/extfeature/:id', authMidd.authenticateUser, createCtrl.createExtFeatures)
 
-// Hoa Info 
-app.get('/api/auth/listing/hoa', authMidd.authenticateUser, createCtrl.getHoa)
-app.post('/api/auth/listing/create/hoa/:id', authMidd.authenticateUser, createCtrl.createHoa)
-
 // Inclusions 
 app.get('/api/auth/listing/inclusions', authMidd.authenticateUser, createCtrl.getInclusions)
 app.post('/api/auth/listing/inclusions/:id', authMidd.authenticateUser, createCtrl.insertInclusions)
 app.delete('/api/auth/listing/inclusions/:id', authMidd.authenticateUser, createCtrl.deleteInclusions)
 
 // Search
-
+app.get('/api/search', searchCtrl.getSearch)
 
 app.listen(SERVER_PORT, () => console.log(chalk.cyan(`Serving on port ${SERVER_PORT} 🚀`)))
