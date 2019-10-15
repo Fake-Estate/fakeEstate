@@ -10,5 +10,7 @@ CREATE TABLE listing (
     bathrooms INTEGER,
     price INTEGER,
     realtor_id INTEGER REFERENCES realtor(id),
-    description TEXT
+    description TEXT,
+    latitude DECIMAL,
+    longitude DECIMAL
 )

@@ -111,9 +111,14 @@ const create = async(req, res) => {
 
 const getListings = async(req, res) => {
     try {
+        const { search } = req.query
         const db = req.app.get('db')
-        let response = await db.listing.get_all_listings()
-        res.send(response)
+        if(search){
+            const searchListings = await db.listing.get_city_state(search)
+            res.status(200).send(searchListings)
+        }else{
+        const response = await db.listing.get_all_listings()
+        res.send(response)}
     } catch (error) {
         if(error) throw error
         console.log('There was an error', error)

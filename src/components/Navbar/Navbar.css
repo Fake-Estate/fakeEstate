@@ -108,5 +108,57 @@
         background:transparent;
         
     }
+
+    .main-menu{
+        height: 60px;
+        width: 100%;
+        background: white;
+        box-sizing: border-box;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        z-index: 998;
+    }
+
+    .search-input-container{
+        height: 60px;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        z-index: 900;
+        top: 0px;
+        transition: .5s;
+    }
+
+    .search-input{
+        height: 60px;
+        width: calc(100% - 60px);
+        border: none;
+        outline: none;
+        font-size: 18px;
+        box-sizing: border-box;
+        padding-left: 20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .slide-search{
+        top: 60px;
+    }
+
+    .search-btn-container{
+        height: 60px;
+        width: 60px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: grey;
+    }
+
+    .search-btn{
+        height: 30px;
+    }
     
 }
