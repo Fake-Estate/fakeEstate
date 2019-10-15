@@ -15,6 +15,8 @@ class CreateListing extends Component {
             city: '',
             state: '',
             zip: null,
+            latitude: null,
+            longitude: null,
             acreage: null,
             square_footage: null,
             bedrooms: null,
@@ -31,6 +33,10 @@ class CreateListing extends Component {
             rooms_description: ''
         }
     }
+    
+    componentDidMount(){
+        this.props.realtorInfo(this.props.first_name, this.props.last_name, this.props.email, this.props.is_admin, this.props.id)
+    }
 
     handleChange = (event) => {
         this.setState({
@@ -40,9 +46,9 @@ class CreateListing extends Component {
 
     createListing = (id) => {
         console.log('hit', this.props)
-        const {mls, address, city, state, acreage,  square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description} = this.state
+        const {mls, address, city, state, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description} = this.state
 
-        const body = {mls, address, city, state, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description}
+        const body = {mls, address, city, state, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description}
         axios.post(`/api/realtor/${id}/listing/create`, body)
             .then(() => {
                 console.log(this.res)
@@ -52,6 +58,8 @@ class CreateListing extends Component {
                 city: '',
                 state: '',
                 zip: null,
+                latitude: null,
+                longitude: null,
                 square_footage: null,
                 acreage: null,
                 bedrooms: null,
@@ -72,6 +80,7 @@ class CreateListing extends Component {
     }
 
     render(){
+        console.log(this.props)
         return(
             <div className='createListing'>
                 <div className='box'>
@@ -109,6 +118,20 @@ class CreateListing extends Component {
                         name='zip'
                         onChange={this.handleChange}
                         value={this.state.zip}
+                        className='input'
+                    />
+                    <input type='integer'
+                        placeholder='Latitute'
+                        name='latitude'
+                        onChange={this.handleChange}
+                        value={this.state.latitude}
+                        className='input'
+                    />
+                    <input type='integer'
+                        placeholder='Longitude'
+                        name='longitude'
+                        onChange={this.handleChange}
+                        value={this.state.longitude}
                         className='input'
                     />
                     <input type='integer'
