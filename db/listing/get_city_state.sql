@@ -1,3 +1,3 @@
 SELECT *
 FROM listing
-WHERE city = $1 OR zipcode = $1 OR mls = $1
+WHERE city = $1 OR state = $1
