@@ -154,14 +154,22 @@ const getRealtorsListings = async(req, res) => {
     }
 }
 
-// const uploadPhoto = (req, res) => {
-//     try {
-//         const db = req.app.get('db')
-//         const {}
-//     } catch (error) {
-        
-//     }
-// }
+const uploadPhoto = (req, res) => {
+    try {
+        const db = req.app.get('db')
+        const {id} = req.params
+
+        const {photo} = req.body
+
+        let response = db.listing.add_photos({id, photo})
+
+        res.send(response)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
 
 const editListing = async(req, res) => {
     try {
@@ -491,4 +499,5 @@ module.exports = {
     // deleteExtFeatures,
     // deleteHoa,
     // deleteInclusions
+    uploadPhoto
 }

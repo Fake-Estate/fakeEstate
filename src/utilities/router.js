@@ -11,6 +11,7 @@ import ExteriorFeatures from './../components/AgentProfile/CreateListing/Exterio
 import OtherFeatures from './../components/AgentProfile/CreateListing/OtherFeatures'
 import RoomsIncluded from './../components/AgentProfile/CreateListing/RoomsIncluded'
 import Inclusions from './../components/AgentProfile/CreateListing/Inclusions'
+import Photos from './../components/AgentProfile/CreateListing/Photos'
 
 
 
@@ -26,6 +27,7 @@ export default(
             <Route path = '/profile/agent/listing/othfeatures' component = {OtherFeatures} />
             <Route path = '/profile/agent/listing/roomsinc' component = {RoomsIncluded} />
             <Route path = '/profile/agent/listing/inclusions' component = {Inclusions} />
+            <Route path = '/profile/agent/listing/addphotos' component = {Photos} />
 
         </Switch>
 )
