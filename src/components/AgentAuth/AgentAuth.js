@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { realtorInfo } from '../../redux/reducers/reducer'
+import { connect } from 'react-redux'
 
 import './AgentAuth.css'
 
-export default class AgentAuth extends Component {
+class AgentAuth extends Component {
     constructor(){
         super()
         this.state = {
@@ -25,13 +27,15 @@ export default class AgentAuth extends Component {
 
     handleRegisterToggle = () => {
         this.setState({
-            register: !this.state.register
+            register: !this.state.register,
+            login: false
         })
     }
 
     handleLoginToggle = () => {
         this.setState({
-            login: !this.state.login
+            login: !this.state.login,
+            register: false
         })
     }
 
@@ -70,6 +74,8 @@ export default class AgentAuth extends Component {
 
         axios.post('/api/realtor/login', body)
             .then(res => {
+                console.log(res.data)
+                this.props.realtorInfo(res.data.first_name, res.data.last_name, res.data.email, res.data.is_admin, res.data.id)
                 this.setState({
                     email: '',
                     password: ''
@@ -82,6 +88,7 @@ export default class AgentAuth extends Component {
 
 
     render() {
+        console.log(this.props)
         return (
             <div>
                 <div>
@@ -148,3 +155,9 @@ export default class AgentAuth extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return state
+}
+
+
+export default connect(mapStateToProps, {realtorInfo})(AgentAuth)

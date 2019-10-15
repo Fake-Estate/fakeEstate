@@ -10,7 +10,7 @@ import Info from './Info'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiamFrZXNtaXRoIiwiYSI6ImNrMWduN2M5bzE2ZnEzaXMxbXVmeGxkbWoifQ.pPUfadIhUul08K-qr81Xmw'
+const MAPBOX_TOKEN = 'pk.eyJ1IjoiamFrZXNtaXRoIiwiYSI6ImNrMXJ3aXBmNTA5eWYzY3F4Yzl5M2RpbzMifQ.koFPHQwgk_YuktIsdAtXMQ'
 
 const fullscreenControlStyle = {
     position: 'absolute',
@@ -23,7 +23,7 @@ const navStyle = {
     position: 'absolute',
     top: 36,
     left: 0,
-    padding: '10px'
+    padding: '10px',
 }
 
 const geolocateStyle = {
@@ -90,7 +90,7 @@ export default class Mapbox extends Component {
                     closeOnClick={false}
                     onClose={this.props.clearPopupInfo}
                 >
-                   <Info/> 
+                   <Info info= {popupInfo}/> 
                 </Popup>
             )
         )
@@ -98,6 +98,7 @@ export default class Mapbox extends Component {
 
     render() {
             const { viewport } = this.state
+            const { pins, renderCityMarker } = this.props
             return (
                 <div className='mapbox-container'>
                     <ReactMapGL
@@ -112,7 +113,9 @@ export default class Mapbox extends Component {
                             onViewportChange={this._onGeocoderViewportChange}
                             mapboxApiAccessToken={MAPBOX_TOKEN}
                         />
-                        
+                        {/* {pins.map(renderCityMarker)}
+
+                        {this.props.popupInfo && this._renderPopup(this.props.popupInfo)} */}
                         <GeolocateControl 
                             style={geolocateStyle}
                             positionOptions={{enableHighAccuracy: true}}
