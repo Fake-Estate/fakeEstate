@@ -138,7 +138,7 @@ const getListingById = async(req, res) => {
 const getRealtorsListings = async(req, res) => {
     try {
         const db = req.app.get('db')
-        const {id} = req.session.realtor
+        const {id} = req.params
 
         let response = await db.listing.get_realtors_listings({id})
         res.send(response)
@@ -152,8 +152,8 @@ const getRealtorsListings = async(req, res) => {
 const editListing = async(req, res) => {
     try {
         const db = req.app.get('db')
-        const {id} = req.params
-        // const {realtor_id} = req.session.realtor
+        // const {id} = req.params
+        const {id} = req.session.realtor
 
         const {mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description} = req.body
 

@@ -1,16 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
-import { realtorInfo } from '../../../redux/reducers/reducer'
-import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 
-// const STYLES = ["artDeco", "capeCod", "countryFrench", "colonial", "contemporary", "cottage", "craftsman", "dutchColonial", "farmhouse", "federal", "frenchProvincial", "georgianColonial", "greekRevival", "italianate", "log", "mediterranean", "midCenturyModern", "modern", "neoclassical", "prairie", "pueblo", "shingle", "southwest", "traditional", "ranch", "tudor", "victorian"]
 
-class CreateListing extends Component {
+
+export default class AgentListing extends Component { 
     constructor(){
         super()
-
         this.state = {
+            editStatus: false,
             mls: null,
             address: '',
             city: '',
@@ -31,12 +29,34 @@ class CreateListing extends Component {
             other_description: '',
             inclusions_description: '',
             hoa_description: '',
-            rooms_description: ''
+            rooms_description: '',
         }
     }
-    
+
     componentDidMount(){
-        this.props.realtorInfo(this.props.first_name, this.props.last_name, this.props.email, this.props.is_admin, this.props.id)
+        this.setState({
+            mls: this.props.listing.mls,
+            address: this.props.listing.address,
+            city: this.props.listing.city,
+            state: this.props.listing.state,
+            zip: this.props.listing.zip,
+            latitude: this.props.listing.latitude,
+            longitude: this.props.listing.longitutde,
+            acreage: this.props.listing.acreage,
+            square_footage: this.props.listing.square_footage,
+            bedrooms: this.props.listing.bedrooms,
+            bathrooms: this.props.listing.bathrooms,
+            price: this.props.listing.proce,
+            description: this.props.listing.description,
+            style_description: this.props.listing.style_description,
+            type_description: this.props.listing.type_description,
+            int_description: this.props.listing.int_description,
+            ext_description: this.props.listing.ext_description,
+            other_description: this.props.listing.other_description,
+            inclusions_description: this.props.listing.inclusions_description,
+            hoa_description: this.props.listing.hoa_description,
+            rooms_description: this.props.listing.rooms_description,
+        })
     }
 
     handleChange = (event) => {
@@ -45,52 +65,73 @@ class CreateListing extends Component {
         })
     }
 
-    createListing = (id) => {
-        console.log('hit', this.props)
-        const {mls, address, city, state, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description} = this.state
-
-        const body = {mls, address, city, state, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description}
-        axios.post(`/api/realtor/${id}/listing/create`, body)
-            .then(() => {
-                console.log(this.res)
-            this.setState = ({
-                mls: null,
-                address: '',
-                city: '',
-                state: '',
-                zip: null,
-                latitude: null,
-                longitude: null,
-                square_footage: null,
-                acreage: null,
-                bedrooms: null,
-                bathrooms: null,
-                price: null,
-                description: '',
-                style_description: '',
-                type_description: '',
-                int_description: '',
-                ext_description: '',
-                other_description: '',
-                inclusions_description: '',
-                hoa_description: '',
-                rooms_description: ''
-            })
-            // this.props.history.push()
-        }).catch(err => console.log(err))
+    handleUpdateToggle = () => {
+        this.setState({
+            editStatus: !this.state.editStatus
+        })
     }
 
-    render(){
+    deleteListing = (id) => {
+        axios.delete(`/api/realtor/listing/delete/${id}`)
+            .then(res => {
+                this.props.getRealtorListing()
+            }).catch(error => {
+                console.log(error)
+            })
+    }
+
+    updateListing = (id) => {
+        const {mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description} = this.state
+
+        const body = {mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description}
+
+        axios.put(`/api/realtor/listing/edit/${id}`, body)
+            .then(res => {
+                this.props.handleUpdateToggle()
+                this.props.getRealtorListing()
+            }).catch(error => {
+                console.log(error, 'error!!!!!!')
+            })
+        
+    }
+
+     render(){
+        const {listing} = this.props
         console.log(this.props)
-        return(
-            <div className='createListing'>
+        return (
+           <div>
+               {!this.state.editStatus
+               ?
+                (<div>
+                   <Link><div>
+                        <span>{listing.address}</span>
+                        <span>{listing.city} {listing.state}, {listing.zip}</span>
+                        <span>{listing.square_footage}</span>
+                        <span>{listing.bedrooms} {listing.bathrooms}</span>
+                        <span>{listing.price}</span>
+                        <span>{listing.acreage}</span>
+                        <span>{listing.description}</span>
+                        <span>{listing.style_description}</span>
+                        <span>{listing.type_description}</span>
+                        <span>{listing.int_description}</span>
+                        <span>{listing.ext_description}</span>
+                        <span>{listing.other_description}</span>
+                        <span>{listing.inclusions_description}</span>
+                        <span>{listing.hoa_description}</span>
+                        <span>{listing.rooms_description}</span>
+                        <button onClick={this.handleUpdateToggle}>Edit</button>
+                        <button onClick={this.deleteListing(listing.id)}>Delete</button>
+                    </div></Link>
+                    </div>)
+                :
+                    (<div>
                 <div className='box'>
-                    <h1>Create A Listing</h1>
-                    <input type='integer'
-                        placeholder='MLS'
-                        name='mls'
+                    <h1>Update Listing</h1>
+                    <input type='text'
+                        placeholder=''
+                        name='address'
                         onChange={this.handleChange}
-                        value={this.state.mls}
+                        value={this.state.address}
                         className='input'
                     />
                     <input type='text'
@@ -233,21 +274,14 @@ class CreateListing extends Component {
                         value={this.state.rooms_description}
                         className='description input'
                     />
-                    <button onClick={() => this.createListing(this.props.id)}>Create Listing</button>
-                    <Link exact to='/profile/agent'><button>Cancel</button></Link>
-
-                        
-
+                    <button onClick={() => this.updateListing(this.props.listing.id)}>Update</button>
+                    <button onClick={this.handleUpdateToggle}>Cancel</button>
                 </div>
-            </div>
+                </div>)
+            
+               }
+               </div>
+            
         )
     }
 }
-
-function mapStateToProps(state){
-    return{
-        id: state.id
-    }
-}
-
-export default connect(mapStateToProps, {realtorInfo})(CreateListing)
