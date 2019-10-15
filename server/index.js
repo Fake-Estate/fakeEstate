@@ -44,9 +44,9 @@ app.get('/api/profile/logout', userCtrl.logout)
 app.post('/api/realtor/:id/listing/create', authMidd.authenticateUser, createCtrl.create )
 app.get('/api/listings', createCtrl.getListings)
 app.get('/api/listing/:id', createCtrl.getListingById)
-app.get('/api/auth/listings', authMidd.authenticateUser, createCtrl.getRealtorsListings)
-app.put('/api/auth/listing/edit/:id', authMidd.authenticateUser, createCtrl.editListing)
-app.delete('/api/auth/listing/delete/:id', authMidd.authenticateUser, createCtrl.deleteListing)
+app.get('/api/realtor/:id/listing', authMidd.authenticateUser, createCtrl.getRealtorsListings)
+app.put('/api/realtor/listing/edit/:id', authMidd.authenticateUser, createCtrl.editListing)
+app.delete('/api/realtor/listing/delete/:id', authMidd.authenticateUser, createCtrl.deleteListing)
 
 // Type Endpoints
 // app.get('/api/auth/listing/type', authMidd.authenticateUser, createCtrl.getType)
