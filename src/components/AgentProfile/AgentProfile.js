@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
+import AgentListings from './AgentListings'
+
 
 class AgentProfile extends Component {
     render() {
@@ -10,6 +12,7 @@ class AgentProfile extends Component {
             <div>
                 Agent Profile
                 <Link to='/profile/agent/listing/create'>Create A Listing</Link>
+                <AgentListings />
             </div>
         )
     }

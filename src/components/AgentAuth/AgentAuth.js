@@ -74,7 +74,6 @@ class AgentAuth extends Component {
 
         axios.post('/api/realtor/login', body)
             .then(res => {
-                console.log(res.data)
                 this.props.realtorInfo(res.data.first_name, res.data.last_name, res.data.email, res.data.is_admin, res.data.id)
                 this.setState({
                     email: '',
@@ -88,7 +87,6 @@ class AgentAuth extends Component {
 
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 <div>
