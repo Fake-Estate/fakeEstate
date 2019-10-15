@@ -126,6 +126,15 @@ const getRealtorsListings = async(req, res) => {
     }
 }
 
+// const uploadPhoto = (req, res) => {
+//     try {
+//         const db = req.app.get('db')
+//         const {}
+//     } catch (error) {
+        
+//     }
+// }
+
 const editListing = async(req, res) => {
     try {
         const db = req.app.get('db')
