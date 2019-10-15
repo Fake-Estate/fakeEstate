@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Navbar from './components/Navbar/Navbar'
+import Fake from './components/aws/Fake'
 
 import Router from './utilities/router'
 // import { withRouter } from 'react-router-dom'
@@ -19,6 +20,7 @@ class App extends Component {
   return (
     <div className="App">
       <Navbar />
+      <Fake />
       {Router}
     </div>
   );
