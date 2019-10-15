@@ -111,9 +111,14 @@ const create = async(req, res) => {
 
 const getListings = async(req, res) => {
     try {
+        const { search } = req.query
         const db = req.app.get('db')
-        let response = await db.listing.get_all_listings()
-        res.send(response)
+        if(search){
+            const searchListings = await db.listing.get_city_state(search)
+            res.status(200).send(searchListings)
+        }else{
+        const response = await db.listing.get_all_listings()
+        res.send(response)}
     } catch (error) {
         if(error) throw error
         console.log('There was an error', error)
@@ -141,6 +146,23 @@ const getRealtorsListings = async(req, res) => {
         const {id} = req.params
 
         let response = await db.listing.get_realtors_listings({id})
+        res.send(response)
+    } catch (error) {
+        if(error) throw error
+        console.log('There was an error', error)
+        res.status(500).send(error)
+    }
+}
+
+const uploadPhoto = (req, res) => {
+    try {
+        const db = req.app.get('db')
+        const {id} = req.params
+
+        const {photo} = req.body
+
+        let response = db.listing.add_photos({id, photo})
+
         res.send(response)
     } catch (error) {
         if(error) throw error
@@ -477,4 +499,5 @@ module.exports = {
     // deleteExtFeatures,
     // deleteHoa,
     // deleteInclusions
+    uploadPhoto
 }

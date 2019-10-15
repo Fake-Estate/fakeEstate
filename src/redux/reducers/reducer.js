@@ -4,13 +4,24 @@ const initialState = {
     id: 0,
     email: '',
     is_admin: null,
-    slide: false
+    slide: false,
+    searchString: '',
+    listing_id: 0
 };
 
 const REALTOR_INFO = 'REALTOR_INFO'
 const LOGOUT_USER = 'LOGOUT_USER'
 const ADD_USER = 'ADD_USER'
 const SLIDE_NAV = 'SLIDE_NAV'
+const SEARCH_STRING = 'SEARCH_STRING'
+const LISTING_ID = 'LISTING_ID'
+
+export function searchByString(search){
+    return{
+        type: SEARCH_STRING,
+        payload: search
+    }
+}
 
 export function realtorInfo(first_name, last_name, email, is_admin, id){
     console.log('hit')
@@ -40,6 +51,13 @@ export function slideNav(slide){
     }
 }
 
+export function listingID(listing_id){
+    return{
+        type: LISTING_ID,
+        payload: {listing_id}
+    }
+}
+
 
 
 export default function reducer(state = initialState, action){
@@ -55,6 +73,10 @@ export default function reducer(state = initialState, action){
             return myObj
         case SLIDE_NAV:
             return Object.assign({}, state, {slide: !action.payload.slide})
+        case SEARCH_STRING:
+            return Object.assign({}, state, {searchString: action.payload})
+        case LISTING_ID:
+            return Object.assign({}, state, {listingID: action.payload})
         default:
             return state
     }

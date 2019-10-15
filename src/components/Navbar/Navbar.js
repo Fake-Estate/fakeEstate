@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import * as Icon from 'react-feather'
 import burger from './Hamburgaler.svg'
-import { slideNav, realtorInfo, logoutUser } from '../../redux/reducers/reducer'
+import search from './search-24px.svg'
+import { slideNav, realtorInfo, logoutUser, searchByString } from '../../redux/reducers/reducer'
 import { connect } from 'react-redux'
 
 import './Navbar.css'
@@ -17,7 +18,9 @@ class Navbar extends Component {
             email: '',
             password: '',
             userRegister: false,
-            login: false
+            login: false,
+            search: false,
+            searchString: ''
         }
     }
 
@@ -88,17 +91,38 @@ class Navbar extends Component {
             })
     }
 
+    searchByCityState = () => {
+        this.props.searchByString(this.state.searchString)
+        this.setState({
+            search: false,
+            searchString: ''
+        })
+    }
+
 
     
     render() {
         return (
             <div>
-                <div className='hamburglar'>
-                     <img src = {burger}
-                      alt='menu' 
-                      onClick={this.slideOut} 
-                      className="burger-menu"/>
+                <div className='main-menu'>
+                    <div className='search-icon-container'>
+                            <img src={search} onClick={() => this.setState({search: !this.state.search})} className='search-icon' alt='search' />
+                    </div>
+                    <div className='hamburglar'>
+                        <img src = {burger}
+                        alt='menu' 
+                        onClick={this.slideOut} 
+                        className="burger-menu"/>
+                    </div>
                 </div>
+                <div className={this.state.search ?  'search-input-container slide-search' : 'search-input-container'}>
+                    <input value={this.state.searchString} placeholder="Search by CITY or ZIP" className='search-input' onChange={e => this.setState({searchString: e.target.value})} />
+                    <div className='search-btn-container'>
+                            <img src={search} alt='search'  className='search-btn' onClick=      {this.searchByCityState}/>
+                    </div>
+                </div>
+                
+                
                 <div className={this.props.slide ? "nav-menu slide-out" : "nav-menu"}>
                     <div className='empty-space' onClick={this.slideOut}></div>
                     <div className='inner-nav'>
@@ -184,4 +208,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps,{slideNav, realtorInfo, logoutUser})(Navbar)
+export default connect(mapStateToProps,{slideNav, realtorInfo, logoutUser, searchByString})(Navbar)
