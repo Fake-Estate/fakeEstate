@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 
 const register = async (req, res) => {
     try {
-        const {first_name, last_name, email, password, license} = req.body
+        const {first_name, last_name, email, password, license, id} = req.body
         const db = req.app.get('db')
 
         let realtors = await db.realtor.get_realtor(email)
