@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import { realtorInfo } from '../../../redux/reducers/reducer'
+import { realtorInfo, listingID } from '../../../redux/reducers/reducer'
 import { connect } from 'react-redux'
 
 // const STYLES = ["artDeco", "capeCod", "countryFrench", "colonial", "contemporary", "cottage", "craftsman", "dutchColonial", "farmhouse", "federal", "frenchProvincial", "georgianColonial", "greekRevival", "italianate", "log", "mediterranean", "midCenturyModern", "modern", "neoclassical", "prairie", "pueblo", "shingle", "southwest", "traditional", "ranch", "tudor", "victorian"]
@@ -50,8 +50,9 @@ class CreateListing extends Component {
 
         const body = {mls, address, city, state, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, zip, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description}
         axios.post(`/api/realtor/${id}/listing/create`, body)
-            .then(() => {
+            .then((res) => {
                 console.log(this.res)
+                listingID(res.data.id)
             this.setState = ({
                 mls: null,
                 address: '',
@@ -75,7 +76,7 @@ class CreateListing extends Component {
                 hoa_description: '',
                 rooms_description: ''
             })
-            // this.props.history.push()
+            this.props.history.push('/profile/agent/listing/addphotos')
         }).catch(err => console.log(err))
     }
 
@@ -248,4 +249,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {realtorInfo})(CreateListing)
+export default connect(mapStateToProps, {realtorInfo, listingID})(CreateListing)

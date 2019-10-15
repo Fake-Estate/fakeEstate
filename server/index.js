@@ -4,6 +4,7 @@ const massive = require('massive')
 const session = require('express-session')
 const cors = require('cors')
 const chalk = require('chalk')
+const aws = require('aws-sdk')
 
 const userCtrl = require('./controllers/users_ctrl')
 const realCtrl = require('./controllers/realtor_ctrl')
@@ -80,6 +81,7 @@ app.get('/api/listing/:id', createCtrl.getListingById)
 app.get('/api/auth/listings', authMidd.authenticateUser, createCtrl.getRealtorsListings)
 app.put('/api/auth/listing/edit/:id', authMidd.authenticateUser, createCtrl.editListing)
 app.delete('/api/auth/listing/delete/:id', authMidd.authenticateUser, createCtrl.deleteListing)
+app.post('/api/auth/listing/:id/photo', authMidd.authenticateUser, createCtrl.uploadPhoto)
 
 // Type Endpoints
 // app.get('/api/auth/listing/type', authMidd.authenticateUser, createCtrl.getType)

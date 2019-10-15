@@ -4,15 +4,17 @@ import {v4 as randomString} from 'uuid'
 import Dropzone from 'react-dropzone'
 import {GridLoader} from 'react-spinners'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class Fake extends Component {
+class Photos extends Component {
     constructor(){
         super()
 
         this.state = {
             isUploading: false,
-            url: 'http://via.placeholder.com/450x450'
+            url: 'http://via.placeholder.com/150x150'
         }
+        
     }
 
     getSignedRequest = ([file]) => {
@@ -44,7 +46,11 @@ export default class Fake extends Component {
             .put(signedRequest, file, options)
             .then(response => {
                 this.setState({isUploading: false, url})
-                // .post()
+                const picture = {
+                    photo: this.state.url,
+                    listing: this.props.listing_id
+                }
+                axios.post('/api/auth/listing/:id/photo', picture)
             })
             .catch(err => {
                 this.setState({
@@ -93,7 +99,7 @@ export default class Fake extends Component {
                             {...getRootProps()}
                         >
                             <input {...getInputProps()} />
-                            { this.state.isUploading 
+                            { isUploading 
                         ?  <GridLoader />
                         : <p>Drop File or Click Here</p>
                     }
@@ -101,9 +107,18 @@ export default class Fake extends Component {
                     )}
                 </Dropzone>
                 <div>
-                    <Link to = {`/studentprofile/${this.props.}`}></Link>
+                    <Link to >Submit</Link>
                 </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = reduxState => {
+    const {listing_id} = reduxState;
+    return {
+        listing_id
+    }
+  }
+  
+  export default connect(mapStateToProps)(Photos);
