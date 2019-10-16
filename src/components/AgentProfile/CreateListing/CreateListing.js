@@ -14,14 +14,14 @@ class CreateListing extends Component {
             address: '',
             city: '',
             state: '',
-            zip: 0,
-            latitude: 1,
-            longitude: 2,
-            acreage: 3,
-            square_footage: 4,
-            bedrooms: 5,
-            bathrooms: 6,
-            price: 7,
+            zip: '',
+            latitude: '',
+            longitude: '',
+            acreage: '',
+            square_footage: '',
+            bedrooms: '',
+            bathrooms: '',
+            price: '',
             description: '',
             style_description: '',
             type_description: '',
@@ -242,13 +242,8 @@ class CreateListing extends Component {
                         // value={this.state.img}
                         className='description input'
                         />
-<<<<<<< HEAD
-                    <button onClick={() => this.createListing(this.props.id)}>Create Listing</button>
-                    <Link to='/profile/agent'><button>Cancel</button></Link>
-=======
                     <button onClick={() => this.createListing()}>Create Listing</button>
                     <Link exact to='/profile/agent'><button>Cancel</button></Link>
->>>>>>> master
 
                         
 

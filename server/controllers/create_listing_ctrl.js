@@ -6,7 +6,10 @@ const create = async(req, res) => {
         
         const realtor_id = req.session.realtor.id
 
-        let response = await db.listing.create_listing({mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, img, realtor_id})
+        const capCity = city.toLowerCase()
+        const capState = state.toLowerCase()
+
+        let response = await db.listing.create_listing({mls, address, capCity, capState, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, img, realtor_id})
         let newListing = response[0]
         
         res.status(200).send(newListing)
@@ -87,12 +90,15 @@ const getRealtorsListings = async(req, res) => {
 const editListing = async(req, res) => {
     try {
         const db = req.app.get('db')
-        // const {id} = req.params
-        const {id} = req.session.realtor
+        const {id} = req.params
+        // const {realtor_id} = req.session.realtor.id
 
         const {mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description} = req.body
 
-        let response = db.listing.update_listing({mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, id})
+        const capCity = city.toLowerCase()
+        const capState = state.toLowerCase()
+
+        let response = db.listing.update_listing({mls, address, capCity, capState, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, id})
 
         res.send(response)
     } catch (error) {

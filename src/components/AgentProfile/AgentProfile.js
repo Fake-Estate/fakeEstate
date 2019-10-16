@@ -10,7 +10,7 @@ class AgentProfile extends Component {
         console.log(this.props)
         return (
             <div>
-                Agent Profile
+                <h1>{this.props.first_name} {this.props.last_name}</h1>
                 <Link to='/profile/agent/listing/create'>Create A Listing</Link>
                 <AgentListings />
             </div>
