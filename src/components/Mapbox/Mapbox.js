@@ -113,9 +113,9 @@ export default class Mapbox extends Component {
                             onViewportChange={this._onGeocoderViewportChange}
                             mapboxApiAccessToken={MAPBOX_TOKEN}
                         />
-                        {/* {pins.map(renderCityMarker)}
+                        {pins.map(renderCityMarker)}
 
-                        {this.props.popupInfo && this._renderPopup(this.props.popupInfo)} */}
+                        {this.props.popupInfo && this._renderPopup(this.props.popupInfo)}
                         <GeolocateControl 
                             style={geolocateStyle}
                             positionOptions={{enableHighAccuracy: true}}

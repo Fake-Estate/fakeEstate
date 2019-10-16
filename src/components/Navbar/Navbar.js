@@ -140,6 +140,7 @@ class Navbar extends Component {
                         </div>
                 
                         <div className = {!this.state.userRegister ?'dont-display' : 'display-register'}>
+                            <div className='register-container'>
                             <input 
                             placeholder='First Name'
                             type='text'
@@ -169,8 +170,10 @@ class Navbar extends Component {
                             value={this.state.password}
                             />
                             <button onClick={this.registerUser}>Register</button>
+                            </div>
                         </div>
                         <div className= {!this.state.login ? 'dont-display' : 'display-login'}>
+                            <div className='login-modal'>
                             <input 
                             placeholder='Email'
                             type='text'
@@ -186,6 +189,7 @@ class Navbar extends Component {
                             value={this.state.password}
                             />
                             <button onClick={this.login}>Login</button>
+                            </div>
                         </div>
                     </div>
                 </div>

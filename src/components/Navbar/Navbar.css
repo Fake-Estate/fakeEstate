@@ -6,9 +6,140 @@
     align-items: center;
 }
 
+.nav-menu{
+    height:10vh;
+    width:100%;
+    background:#3c3f63;
+    position: fixed;
+    color:white;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    z-index:900;
+}
+
+
+
+.search-icon-container{
+    z-index:999;
+    position:fixed;
+}
+
+.hamburglar{
+    display:none;
+}
+
+.closer{
+    display:none;
+}
+.empty-space{
+    display: none;
+}
+
+.inner-nav{
+    display:flex;
+    flex-direction: row;
+}
+
+.search-input-container{
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    top: 0px;
+    transition: .5s;
+}
+
+.register-btn{
+    color:white;
+}
+
+.login-btn{
+    color:white;
+}
+
+.realtor-portal{
+    text-decoration: none;
+    color:white;
+}
+
 .dont-display{
     display: none;
 }
+
+@media(max-width: 1024px){
+    .nav-menu{
+        height:10vh;
+        width:100%;
+        background:#3c3f63;
+        position: fixed;
+        color:white;
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        z-index:900;
+    }
+
+    
+
+    .search-icon-container{
+        z-index:999;
+        position:fixed;
+    }
+
+    .hamburglar{
+        display:none;
+    }
+
+    .closer{
+        display:none;
+    }
+    .empty-space{
+        display: none;
+    }
+
+    .inner-nav{
+        display:flex;
+        flex-direction: row;
+    }
+
+    .search-input-container{
+        height: 60px;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        top: 0px;
+        transition: .5s;
+    }
+
+    .register-btn{
+        color:white;
+    }
+
+    .login-btn{
+        color:white;
+    }
+
+    .realtor-portal{
+        text-decoration: none;
+        color:white;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -22,6 +153,7 @@
         z-index: 1000;
         left: 100%;
         transition: .6s;
+        background:transparent;
     }
 
     .register-container{
@@ -30,6 +162,7 @@
         display:flex;
         align-items: center;
         justify-content: center;
+        color:#3c3f63;
         border-bottom: 1px solid #c6e5d2;
     }
 
@@ -39,8 +172,6 @@
 
     .hamburglar{
         display:flex;
-        justify-content: flex-end;
-        
     }
     
     .burger-menu{
@@ -55,6 +186,12 @@
         align-items:center;
         justify-content: flex-start;
         margin-left:55px;
+        
+    }
+
+    .closer{
+        color:#3c3f63;
+        display: flex;
     }
 
     .realtor-container{
@@ -80,17 +217,20 @@
     .realtor-portal{
         text-decoration: none;
         font-size:20px;
+        color:#3c3f63;
 
     }
 
     .login-btn{
         text-decoration: none;
         font-size:20px;
+        color:#3c3f63
     }
 
     .register-btn{
         text-decoration: none;
         font-size:20px;
+        color:#3c3f63;
     }
 
     .inner-nav{
@@ -105,21 +245,29 @@
 
     .empty-space{
         width:30%;
+        height:100%;
         background:transparent;
+        display:flex;
         
     }
 
     .main-menu{
         height: 60px;
         width: 100%;
-        background: white;
+        background: #A6A6C7;
         box-sizing: border-box;
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 1px solid #3c3f63;
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         position: fixed;
         z-index: 998;
+    }
+
+    .search-icon-container{
+        height:60px;
+        width:50px;
     }
 
     .search-input-container{
@@ -159,6 +307,20 @@
 
     .search-btn{
         height: 30px;
+    }
+
+    .display-login{
+        height:100vh;
+        width:100vw;
+        background:blue;
+        position: fixed;
+    }
+
+    .login-modal{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     
 }
