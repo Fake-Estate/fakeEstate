@@ -6,6 +6,64 @@
     align-items: center;
 }
 
+.nav-menu{
+    height:10vh;
+    width:100%;
+    background:#3c3f63;
+    position: fixed;
+    color:white;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    z-index:900;
+}
+
+
+
+.search-icon-container{
+    z-index:999;
+    position:fixed;
+}
+
+.hamburglar{
+    display:none;
+}
+
+.closer{
+    display:none;
+}
+.empty-space{
+    display: none;
+}
+
+.inner-nav{
+    display:flex;
+    flex-direction: row;
+}
+
+.search-input-container{
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    top: 0px;
+    transition: .5s;
+}
+
+.register-btn{
+    color:white;
+}
+
+.login-btn{
+    color:white;
+}
+
+.realtor-portal{
+    text-decoration: none;
+    color:white;
+}
+
 .dont-display{
     display: none;
 }
@@ -75,6 +133,12 @@
         align-items:center;
         justify-content: flex-start;
         margin-left:55px;
+        
+    }
+
+    .closer{
+        color:#3c3f63;
+        display: flex;
     }
 
     .realtor-container{
