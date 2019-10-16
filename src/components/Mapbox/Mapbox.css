@@ -1,0 +1,8 @@
+.mapbox-container{
+    position: fixed;
+    z-index: -1;
+}
+
+.mapbox-margin{
+    height: 75px;
+}

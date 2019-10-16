@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+.info-container{
+    height: 200px;
+    width: 250px;
+}
+
+.info-title{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.info-displayname{
+    margin-right: 10px;
+    word-wrap: inherit;
+}
+
+.info-website{
+    margin-left: 10px;
+}
+
+.info-image{
+    width: 250px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}

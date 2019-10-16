@@ -4,7 +4,7 @@ CREATE TABLE listing (
     address VARCHAR(250),
     city VARCHAR(250),
     state VARCHAR(2),
-    acreage DECIMAL,
+    acreage INTEGER,
     square_footage INTEGER,
     bedrooms INTEGER,
     bathrooms INTEGER,
@@ -12,5 +12,6 @@ CREATE TABLE listing (
     realtor_id INTEGER REFERENCES realtor(id),
     description TEXT,
     latitude DECIMAL,
-    longitude DECIMAL
+    longitude DECIMAL,
+    img VARCHAR,
 )

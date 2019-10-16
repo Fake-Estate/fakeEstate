@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
 import './Landing.css'
-// import Results from '../Results/Results'
-// import MasterForm from '../AgentProfile/CreateListing/MasterForm'
 
+// React Redux
+import { connect } from 'react-redux'
 
-export default class Landing extends Component { 
+import {searchByString} from '../../redux/reducers/reducer'
+
+class Landing extends Component { 
     constructor(){
         super()
         this.state = {
-            searchBar: '',
+            searchText: '',
             showResults: false,
             searchResults: []
         }
@@ -26,7 +27,7 @@ export default class Landing extends Component {
     } 
 
     getBySearch = () => {
-        console.log('hit3', this.state.searchBar)
+        console.log('hit3', this.state.searchText)
         
         const {results} = this.props.match.params
         axios.get(`/api/search?results=${results}`)
@@ -43,6 +44,11 @@ export default class Landing extends Component {
             })
     }
 
+    updateReduxSearchString = () => {
+        this.props.searchByString(this.state.searchText)
+        this.props.history.push('/results')
+    }
+
     render() {
         const mappedResults = this.state.searchResults.map((result, i) => {
             return (
@@ -54,31 +60,25 @@ export default class Landing extends Component {
         })
         return (
             <div className='landing-container'>
-                <input 
-                    placeholder='Search by city, zip code, or MLS #'
-                    type='text'
-                    name='searchBar'
-                    onChange={this.handleChange}
-                    value={this.state.searchBar}
-                />
-                <button onClick={this.getBySearch}>Search</button>
-
-                <div>
-                    <label>Results</label>
-                    {mappedResults}
+                <div className="space-away"></div>
+                <div className="search-container">
+                    <input 
+                        placeholder='Search by city or zip code'
+                        className="middle-input"
+                        type='text'
+                        name='searchText'
+                        onChange={this.handleChange}
+                        value={this.state.searchText}
+                    />
+                    <button className="middle-input search-btn" onClick={this.updateReduxSearchString}>Search</button>
                 </div>
-                {this.state.showResults
-                ?
-                    (<div>
-                        {/* <Results searchResults={searchResults} /> */}
-                    </div>)
-                :
-                (<div>
-
-                </div>)
-                }
-               
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return state
+}
+
+export default connect(mapStateToProps, {searchByString})(Landing)
