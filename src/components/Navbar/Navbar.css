@@ -68,86 +68,11 @@
     display: none;
 }
 
-@media(max-width: 1024px){
-    .nav-menu{
-        height:10vh;
-        width:100%;
-        background:#3c3f63;
-        position: fixed;
-        color:white;
-        display:flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-        z-index:900;
-    }
-
-    
-
-    .search-icon-container{
-        z-index:999;
-        position:fixed;
-    }
-
-    .hamburglar{
-        display:none;
-    }
-
-    .closer{
-        display:none;
-    }
-    .empty-space{
-        display: none;
-    }
-
-    .inner-nav{
-        display:flex;
-        flex-direction: row;
-    }
-
-    .search-input-container{
-        height: 60px;
-        width: 100%;
-        position: fixed;
-        display: flex;
-        top: 0px;
-        transition: .5s;
-    }
-
-    .register-btn{
-        color:white;
-    }
-
-    .login-btn{
-        color:white;
-    }
-
-    .realtor-portal{
-        text-decoration: none;
-        color:white;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media(max-width:414px){
     .navbar-container{
         width: 100%;
-        height: 75px;
-        background: #e5e5e5;
+        height: 6em;
+        background: #3c3f63;
         position: fixed;
     }
 
@@ -174,17 +99,28 @@
         display: flex;
         align-items: center;    
         justify-content: space-between;
+        margin-top: 0.05em;
     }
 
     .fakeEstate-logo{
+        margin-top: 1em;
         margin-left: 10px;
+        max-height: 100%;
+        max-width: 4em;
+        display: flex;
+        
+        
     }
 
     .logo-link{
         text-decoration: none;
-        color: black;
+        color: #e5e5e5;
+        font-size: 0.1 rem;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 0.5em;
+        cursor: pointer;
     }
-    
+
     .burger-menu{
         font-size:30%;
         margin-right: 10px;
@@ -211,8 +147,8 @@
         display:flex;
         justify-content: center;
         align-items: center;
-        border-top: 1px solid #c6e5d2;
-        border-bottom: 1px solid #c6e5d2;
+        border-top: 1px solid #3c3f63;
+        border-bottom: 1px solid #3c3f63;
     }
 
     .realtor-portal{
@@ -227,7 +163,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background:white;
+        background:#e5e5e5;
         box-shadow: -4px 1px 15px 0px rgba(0,0,0,0.75);
     }
 
