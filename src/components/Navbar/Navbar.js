@@ -21,6 +21,7 @@ class Navbar extends Component {
                         <Link to='/' className='logo-link'><p>logo here</p></Link>
                     </div>
                     <img 
+                        data-testid = 'burgerrs'
                         src = {burger}
                         alt='menu' 
                         onClick={this.slideOut} 

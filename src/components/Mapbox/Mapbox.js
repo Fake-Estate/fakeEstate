@@ -5,7 +5,7 @@ import ReactMapGL, { Popup, NavigationControl, FullscreenControl, GeolocateContr
 import GeoCoder from 'react-map-gl-geocoder';
 
 // Components
-import Info from './Info';
+import Info from './Info/Info';
 
 // Stylesheet
 import 'mapbox-gl/dist/mapbox-gl.css'
