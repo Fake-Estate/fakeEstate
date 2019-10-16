@@ -1,0 +1,19 @@
+.mobile-map-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: -1;
+}
+
+.mobile-map-margin{
+    height: 75px;
+    width: 100%;
+}
+
+.mobile-mapbox-container{
+    height: calc(100vh - 75px);
+    width: 100%;
+}

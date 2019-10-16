@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
+// Mapbox
 import ReactMapGL, { Popup, NavigationControl, FullscreenControl, GeolocateControl } from 'react-map-gl';
 import GeoCoder from 'react-map-gl-geocoder';
 
 // Components
-import Info from './Info'
+import Info from './Info';
 
-// stylesheets
+// Stylesheet
 import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiamFrZXNtaXRoIiwiYSI6ImNrMXJ3aXBmNTA5eWYzY3F4Yzl5M2RpbzMifQ.koFPHQwgk_YuktIsdAtXMQ'
+const MAPBOX_TOKEN = 'pk.eyJ1Ijoiam1naW5vIiwiYSI6ImNrMHh4d3c1YTA0OGozY3FlMXhxeGx0NXkifQ.3O6KjeqmPLIBVJm4S04hOA';
 
 const fullscreenControlStyle = {
     position: 'absolute',
@@ -23,7 +24,7 @@ const navStyle = {
     position: 'absolute',
     top: 36,
     left: 0,
-    padding: '10px',
+    padding: '10px'
 }
 
 const geolocateStyle = {
@@ -38,7 +39,7 @@ export default class Mapbox extends Component {
         super()
         this.state = {
             viewport: {
-                height: '90vh',
+                height: '100vh',
                 width: '100%',
                 latitude: 39.419220,
                 longitude: -111.950684,
@@ -90,48 +91,50 @@ export default class Mapbox extends Component {
                     closeOnClick={false}
                     onClose={this.props.clearPopupInfo}
                 >
-                   <Info info= {popupInfo}/> 
+                    <Info info={popupInfo} />
                 </Popup>
             )
         )
     }
 
     render() {
-            const { viewport } = this.state
-            const { pins, renderCityMarker } = this.props
-            return (
-                <div className='mapbox-container'>
-                    <ReactMapGL
-                        ref={this.mapRef}
-                        {...viewport}
-                        mapStyle="mapbox://styles/mapbox/light-v9"
-                        onViewportChange={this._onViewportChange}
+        const { viewport } = this.state
+        const { pins, renderCityMarker } = this.props
+        return (
+            <div className='mapbox-container'>
+                <ReactMapGL
+                    ref={this.mapRef}
+                    {...viewport}
+                    mapStyle="mapbox://styles/mapbox/dark-v9"
+                    onViewportChange={this._onViewportChange}
+                    mapboxApiAccessToken={MAPBOX_TOKEN}
+                >
+                    <GeoCoder 
+                        mapRef={this.mapRef}
+                        onViewportChange={this._onGeocoderViewportChange}
                         mapboxApiAccessToken={MAPBOX_TOKEN}
-                    >
-                        <GeoCoder 
-                            mapRef={this.mapRef}
-                            onViewportChange={this._onGeocoderViewportChange}
-                            mapboxApiAccessToken={MAPBOX_TOKEN}
-                        />
-                        {/* {pins.map(renderCityMarker)}
+                    />
 
-                        {this.props.popupInfo && this._renderPopup(this.props.popupInfo)} */}
-                        <GeolocateControl 
-                            style={geolocateStyle}
-                            positionOptions={{enableHighAccuracy: true}}
-                            trackUserLocation={true}
-                        />
-    
-                        <div className='fullscreen' style={fullscreenControlStyle}>
-                            <FullscreenControl />
-                        </div>
-    
-                        <div className='nav' style={navStyle}>
-                            <NavigationControl />
-                        </div>
-    
-                    </ReactMapGL>
-                </div>
+                    {pins.map(renderCityMarker)}
+
+                    {this.props.popupInfo && this._renderPopup(this.props.popupInfo)}
+                    
+                    <GeolocateControl 
+                        style={geolocateStyle}
+                        positionOptions={{enableHighAccuracy: true}}
+                        trackUserLocation={true}
+                    />
+
+                    <div className='fullscreen' style={fullscreenControlStyle}>
+                        <FullscreenControl />
+                    </div>
+
+                    <div className='nav' style={navStyle}>
+                        <NavigationControl />
+                    </div>
+
+                </ReactMapGL>
+            </div>
         )
     }
 }

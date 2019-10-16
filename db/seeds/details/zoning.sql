@@ -1,4 +1,0 @@
-CREATE TABLE zoning (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR
-)
