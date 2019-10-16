@@ -242,13 +242,8 @@ class CreateListing extends Component {
                         // value={this.state.img}
                         className='description input'
                         />
-<<<<<<< HEAD
-                    <button onClick={() => this.createListing(this.props.id)}>Create Listing</button>
-                    <Link to='/profile/agent'><button>Cancel</button></Link>
-=======
                     <button onClick={() => this.createListing()}>Create Listing</button>
                     <Link exact to='/profile/agent'><button>Cancel</button></Link>
->>>>>>> master
 
                         
 
