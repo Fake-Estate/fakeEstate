@@ -19,6 +19,5 @@ export default(
             <Route path = '/profile/agent/listing/create' component = {CreateListing} />
             <Route path = '/map' component = {MobileMap} />
             <Route path = '/listing/:id' component = {Listing} />
-
         </Switch>
 )

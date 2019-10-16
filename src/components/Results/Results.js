@@ -37,19 +37,6 @@ class Results extends Component {
         })
     }
 
-    // renderCityMarker = (listing, index) => {
-    //     let parsedLat = +listing.latitude
-    //     let parsedLong = +listing.longitude
-    //     return(
-    //         <Marker
-    //         key={`marker-${index}`}
-    //         latitude = {parsedLat}
-    //         longitude = {parsedLong}
-    //         >
-    //             <Pin size = {20} onClick ={ () => this.setState({popupInfo: listing})} />
-    //         </Marker>
-    //     )
-    // }
 
     clearPopupInfo = () => {
         this.setState({popupInfo:null})
