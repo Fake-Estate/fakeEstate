@@ -6,12 +6,8 @@ import Results from '../components/Results/Results';
 import AgentAuth from '../components/AgentAuth/AgentAuth'
 import AgentProfile from '../components/AgentProfile/AgentProfile'
 import CreateListing from './../components/AgentProfile/CreateListing/CreateListing'
-import InteriorFeatures from './../components/AgentProfile/CreateListing/InteriorFeatures'
-import ExteriorFeatures from './../components/AgentProfile/CreateListing/ExteriorFeatures'
-import OtherFeatures from './../components/AgentProfile/CreateListing/OtherFeatures'
-import RoomsIncluded from './../components/AgentProfile/CreateListing/RoomsIncluded'
-import Inclusions from './../components/AgentProfile/CreateListing/Inclusions'
-
+import MobileMap from './../components/MobileMap/MobileMap'
+import Listing from './../components/Listing/Listing'
 
 
 export default(
@@ -21,11 +17,8 @@ export default(
             <Route path = '/portal' component = {AgentAuth} />
             <Route exact path = '/profile/agent' component = {AgentProfile} />
             <Route path = '/profile/agent/listing/create' component = {CreateListing} />
-            <Route path = '/profile/agent/listing/intfeatures' component = {InteriorFeatures} />
-            <Route path = '/profile/agent/listing/extfeature' component = {ExteriorFeatures} />
-            <Route path = '/profile/agent/listing/othfeatures' component = {OtherFeatures} />
-            <Route path = '/profile/agent/listing/roomsinc' component = {RoomsIncluded} />
-            <Route path = '/profile/agent/listing/inclusions' component = {Inclusions} />
+            <Route path = '/map' component = {MobileMap} />
+            <Route path = '/listing/:id' component = {Listing} />
 
         </Switch>
 )

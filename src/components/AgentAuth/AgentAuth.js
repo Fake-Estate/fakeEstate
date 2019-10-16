@@ -74,7 +74,6 @@ class AgentAuth extends Component {
 
         axios.post('/api/realtor/login', body)
             .then(res => {
-                console.log(res.data)
                 this.props.realtorInfo(res.data.first_name, res.data.last_name, res.data.email, res.data.is_admin, res.data.id)
                 this.setState({
                     email: '',
@@ -88,15 +87,19 @@ class AgentAuth extends Component {
 
 
     render() {
-        console.log(this.props)
         return (
             <div>
-                <div>
-                    <button onClick={this.handleRegisterToggle}>Register</button>
-                    <button onClick={this.handleLoginToggle}>Login</button>
+                <div className='agentauth-margin'/>
+                <div className='agentauth-btns'>
+                    <button onClick={this.handleRegisterToggle} className='register-btn'>Register</button>
+                    <button onClick={this.handleLoginToggle} className='login-btn'>Login</button>
                 </div>
                 
                     <div className = {!this.state.register ? 'dont-display' : 'display-register'}>
+                        <div>
+                            <h1 className='register-title'>Register</h1>
+                        </div>
+                        <div className='register-inputs'>
                             <input 
                             placeholder='First Name'
                             type='text'
@@ -132,24 +135,36 @@ class AgentAuth extends Component {
                             onChange={this.handleChange}
                             value={this.state.password}
                             />
-                            <button onClick={this.registerAgent}>Register</button>
+                        </div>
+                        <section className='register-btns'>
+                            <button className='register-cancel' onClick={this.handleRegisterToggle}>Cancel</button>
+                            <button className='register-submit' onClick={this.registerAgent}>Register</button>
+                        </section>
                     </div>
                     <div className= {!this.state.login ? 'dont-display' : 'display-login'}>
-                        <input 
-                            placeholder='Email'
-                            type='text'
-                            name='email'
-                            onChange={this.handleChange}
-                            value={this.state.email}
-                        />
-                        <input 
-                            placeholder='Password'
-                            type='password'
-                            name='password'
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                        />
-                        <button onClick={this.loginAgent}>Login</button>
+                        <div>
+                            <h1 className='register-title'>Login</h1>
+                        </div>
+                        <div className='register-inputs'>
+                            <input 
+                                placeholder='Email'
+                                type='text'
+                                name='email'
+                                onChange={this.handleChange}
+                                value={this.state.email}
+                            />
+                            <input 
+                                placeholder='Password'
+                                type='password'
+                                name='password'
+                                onChange={this.handleChange}
+                                value={this.state.password}
+                            />
+                        </div>
+                        <section className='register-btns'>
+                            <button className='register-cancel' onClick={this.handleLoginToggle}>Cancel</button>
+                            <button className='register-submit' onClick={this.loginAgent}>Login</button>
+                        </section>
                     </div>
             </div>
         )
