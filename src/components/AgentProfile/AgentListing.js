@@ -120,7 +120,7 @@ export default class AgentListing extends Component {
                         <span>{listing.hoa_description}</span>
                         <span>{listing.rooms_description}</span>
                         <button onClick={this.handleUpdateToggle}>Edit</button>
-                        <button onClick={this.deleteListing(listing.id)}>Delete</button>
+                        <button onClick={() => this.deleteListing(listing.id)}>Delete</button>
                     </div></Link>
                     </div>)
                 :
