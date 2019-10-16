@@ -5,8 +5,7 @@ const initialState = {
     email: '',
     is_admin: null,
     slide: false,
-    searchString: '',
-    listing_id: 0
+    searchString: ''
 };
 
 const REALTOR_INFO = 'REALTOR_INFO'
@@ -14,7 +13,6 @@ const LOGOUT_USER = 'LOGOUT_USER'
 const ADD_USER = 'ADD_USER'
 const SLIDE_NAV = 'SLIDE_NAV'
 const SEARCH_STRING = 'SEARCH_STRING'
-const LISTING_ID = 'LISTING_ID'
 
 export function searchByString(search){
     return{
@@ -51,12 +49,6 @@ export function slideNav(slide){
     }
 }
 
-export function listingID(listing_id){
-    return{
-        type: LISTING_ID,
-        payload: {listing_id}
-    }
-}
 
 
 
@@ -75,8 +67,6 @@ export default function reducer(state = initialState, action){
             return Object.assign({}, state, {slide: !action.payload.slide})
         case SEARCH_STRING:
             return Object.assign({}, state, {searchString: action.payload})
-        case LISTING_ID:
-            return Object.assign({}, state, {listingID: action.payload})
         default:
             return state
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import * as Icon from 'react-feather'
 import burger from './Hamburgaler.svg'
+import realEstateLogo from './GrowingIndustry_IconSet_RealEstate.svg'
 import { slideNav } from '../../redux/reducers/reducer'
 import { connect } from 'react-redux'
 
@@ -18,9 +19,19 @@ class Navbar extends Component {
             <div className='navbar-container'>
                 <div className='hamburglar'>
                     <div className='fakeEstate-logo'>
-                        <Link to='/' className='logo-link'><p>logo here</p></Link>
+                        <Link to='/' className='logo-link'>
+                            <img 
+                                src = {realEstateLogo}
+                                alt='logo'
+                                className='logo'
+                            />
+                            <p>
+                                REU
+                            </p>
+                            </Link>
                     </div>
                     <img 
+                        data-testid = 'burgerrs'
                         src = {burger}
                         alt='menu' 
                         onClick={this.slideOut} 

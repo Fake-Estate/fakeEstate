@@ -17,8 +17,6 @@ class Landing extends Component {
         }
     }
 
-
-
     handleChange = (event) => {
         console.log(event.target.value)
         this.setState({
@@ -60,18 +58,21 @@ class Landing extends Component {
         })
         return (
             <div className='landing-container'>
-                <div className="space-away"></div>
-                <div className="search-container">
-                    <input 
-                        placeholder='Search by city or zip code'
-                        className="middle-input"
-                        type='text'
-                        name='searchText'
-                        onChange={this.handleChange}
-                        value={this.state.searchText}
-                    />
-                    <button className="middle-input search-btn" onClick={this.updateReduxSearchString}>Search</button>
+                <div className='title-container'>
+                Real Estate of Utah
                 </div>
+                <div className="search-container">
+                        <input 
+                            placeholder='Search by city or zip code'
+                            className="middle-input"
+                            type='text'
+                            name='searchText'
+                            onChange={this.handleChange}
+                            value={this.state.searchText}
+                        />
+                        <button className="middle-input search-btn" onClick={this.updateReduxSearchString}>Search</button>
+                    </div>
+                
             </div>
         )
     }

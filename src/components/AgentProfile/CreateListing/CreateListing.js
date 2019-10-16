@@ -10,7 +10,7 @@ class CreateListing extends Component {
         super()
 
         this.state = {
-            mls: null,
+            mls: 0,
             address: '',
             city: '',
             state: '',
@@ -94,21 +94,21 @@ class CreateListing extends Component {
                         value={this.state.mls}
                         className='input'
                     />
-                    <input type='text'
+                    <input 
                         placeholder='Address'
                         name='address'
                         onChange={this.handleChange}
                         value={this.state.address}
                         className='input'
                     />
-                    <input type='text'
+                    <input 
                         placeholder='City'
                         name='city'
                         onChange={this.handleChange}
                         value={this.state.city}
                         className='input'
                     />
-                    <input type='text'
+                    <input 
                         placeholder='State'
                         name='state'
                         onChange={this.handleChange}
