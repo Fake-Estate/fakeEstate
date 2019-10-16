@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import { realtorInfo, listingID } from '../../../redux/reducers/reducer'
+import { realtorInfo } from '../../../redux/reducers/reducer'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 
@@ -11,18 +11,18 @@ class CreateListing extends Component {
         super()
 
         this.state = {
-            mls: null,
+            mls: 0,
             address: '',
             city: '',
             state: '',
-            zip: null,
-            latitude: null,
-            longitude: null,
-            acreage: null,
-            square_footage: null,
-            bedrooms: null,
-            bathrooms: null,
-            price: null,
+            zip: 0,
+            latitude: 0,
+            longitude: 0,
+            acreage: 0,
+            square_footage: 0,
+            bedrooms: 0,
+            bathrooms: 0,
+            price: 0,
             description: '',
             style_description: '',
             type_description: '',
@@ -53,20 +53,19 @@ class CreateListing extends Component {
         axios.post(`/api/realtor/${id}/listing/create`, body)
             .then((res) => {
                 console.log(this.res)
-                listingID(res.data.id)
             this.setState = ({
-                mls: null,
+                mls: 0,
                 address: '',
                 city: '',
                 state: '',
-                zip: null,
-                latitude: null,
-                longitude: null,
-                square_footage: null,
-                acreage: null,
-                bedrooms: null,
-                bathrooms: null,
-                price: null,
+                zip: 0,
+                latitude: 0,
+                longitude: 0,
+                square_footage: 0,
+                acreage: 0,
+                bedrooms: 0,
+                bathrooms: 0,
+                price: 0,
                 description: '',
                 style_description: '',
                 type_description: '',
@@ -77,7 +76,6 @@ class CreateListing extends Component {
                 hoa_description: '',
                 rooms_description: ''
             })
-            this.props.history.push('/profile/agent/listing/addphotos')
         }).catch(err => console.log(err))
     }
 
@@ -87,70 +85,70 @@ class CreateListing extends Component {
             <div className='createListing'>
                 <div className='box'>
                     <h1>Create A Listing</h1>
-                    <input type='integer'
+                    <input
                         placeholder='MLS'
                         name='mls'
                         onChange={this.handleChange}
                         value={this.state.mls}
                         className='input'
                     />
-                    <input type='text'
+                    <input 
                         placeholder='Address'
                         name='address'
                         onChange={this.handleChange}
                         value={this.state.address}
                         className='input'
                     />
-                    <input type='text'
+                    <input 
                         placeholder='City'
                         name='city'
                         onChange={this.handleChange}
                         value={this.state.city}
                         className='input'
                     />
-                    <input type='text'
+                    <input 
                         placeholder='State'
                         name='state'
                         onChange={this.handleChange}
                         value={this.state.state}
                         className='input'
                     />
-                    <input type='integer'
+                    <input 
                         placeholder='Zip Code'
                         name='zip'
                         onChange={this.handleChange}
                         value={this.state.zip}
                         className='input'
                     />
-                    <input type='integer'
+                    <input 
                         placeholder='Latitute'
                         name='latitude'
                         onChange={this.handleChange}
                         value={this.state.latitude}
                         className='input'
                     />
-                    <input type='integer'
+                    <input 
                         placeholder='Longitude'
                         name='longitude'
                         onChange={this.handleChange}
                         value={this.state.longitude}
                         className='input'
                     />
-                    <input type='integer'
+                    <input 
                         placeholder='Acreage'
                         name='acreage'
                         onChange={this.handleChange}
                         value={this.state.acreage}
                         className='input'
                     />
-                    <input type='integer'
+                    <input 
                         placeholder='Square Footage'
                         name='square_footage'
                         onChange={this.handleChange}
                         value={this.state.square_footage}
                         className='input'
                     />
-                    <input type='integer'
+                    <input 
                         placeholder='Bedrooms'
                         name='bedrooms'
                         onChange={this.handleChange}
@@ -235,7 +233,7 @@ class CreateListing extends Component {
                         className='description input'
                     />
                     <button onClick={() => this.createListing(this.props.id)}>Create Listing</button>
-                    <Link exact to='/profile/agent'><button>Cancel</button></Link>
+                    <Link to='/profile/agent'><button>Cancel</button></Link>
 
                         
 
@@ -251,4 +249,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {realtorInfo, listingID})(CreateListing)
+export default connect(mapStateToProps, {realtorInfo})(CreateListing)
