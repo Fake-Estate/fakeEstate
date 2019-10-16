@@ -59,7 +59,7 @@ class Landing extends Component {
         return (
             <div className='landing-container'>
                 <div className='title-container'>
-                Real Estate of Utah
+                <h1 className=''>Real Estate of Utah</h1>
                 </div>
                 <div className="search-container">
                         <input 
