@@ -1,16 +1,15 @@
 const create = async(req, res) => {
+    console.log('hit')
     try {
         const db = req.app.get('db')
         const {mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, img} = req.body
         
-        const {id} = req.params
+        const realtor_id = req.session.realtor.id
 
-        let response = await db.listing.create_listing({mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, img, id})
+        let response = await db.listing.create_listing({mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, img, realtor_id})
         let newListing = response[0]
         
-        req.session.house = newListing
-        console.log('create', req.session.house)
-        res.send(req.session.house)
+        res.status(200).send(newListing)
 
     } catch (error) {
         if(error) throw error
@@ -84,22 +83,6 @@ const getRealtorsListings = async(req, res) => {
     }
 }
 
-const uploadPhoto = (req, res) => {
-    try {
-        const db = req.app.get('db')
-        const {id} = req.params
-
-        const {photo} = req.body
-
-        let response = db.listing.add_photos({id, photo})
-
-        res.send(response)
-    } catch (error) {
-        if(error) throw error
-        console.log('There was an error', error)
-        res.status(500).send(error)
-    }
-}
 
 const editListing = async(req, res) => {
     try {

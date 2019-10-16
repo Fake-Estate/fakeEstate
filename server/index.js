@@ -35,7 +35,7 @@ massive(CONNECTION_STRING).then(db => {
 app.post('/api/realtor/create', realCtrl.register)
 app.post('/api/realtor/login', realCtrl.login)
 app.get('/api/realtor/:id/listing', authMidd.authenticateUser, createCtrl.getRealtorsListings)
-app.post('/api/realtor/:id/listing/create', authMidd.authenticateUser, createCtrl.create )
+app.post('/api/realtor/listing/create', createCtrl.create )
 app.put('/api/realtor/listing/edit/:id', authMidd.authenticateUser, createCtrl.editListing)
 app.delete('/api/realtor/listing/delete/:id', authMidd.authenticateUser, createCtrl.deleteListing)
 

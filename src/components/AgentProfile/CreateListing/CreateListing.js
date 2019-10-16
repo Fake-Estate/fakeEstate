@@ -45,14 +45,14 @@ class CreateListing extends Component {
         })
     }
 
-    createListing = (id) => {
+    createListing = () => {
         console.log('hit', this.props)
         const {mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description,  style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, img} = this.state
 
         const body = {mls, address, city, state, zip, latitude, longitude, acreage, square_footage, bedrooms, bathrooms, price, description, style_description, type_description, int_description, ext_description, other_description, inclusions_description, hoa_description, rooms_description, img}
-        axios.post(`/api/realtor/${id}/listing/create`, body)
+        axios.post(`/api/realtor/listing/create`, body)
             .then((res) => {
-                console.log(id)
+                console.log(res.data)
             this.setState = ({
                 mls: null,
                 address: null,
@@ -242,7 +242,7 @@ class CreateListing extends Component {
                         // value={this.state.img}
                         className='description input'
                         />
-                    <button onClick={() => this.createListing(this.props.id)}>Create Listing</button>
+                    <button onClick={() => this.createListing()}>Create Listing</button>
                     <Link exact to='/profile/agent'><button>Cancel</button></Link>
 
                         
