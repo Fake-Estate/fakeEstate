@@ -3,4 +3,7 @@
 .App{
     min-height: 100Vh;
     max-width: 100vw;
+    background: #e5e5e5;
+    overflow: auto;
+    position: relative;
 }
