@@ -5,26 +5,19 @@ import axios from 'axios'
 import {logoutUser} from './../../redux/reducers/reducer'
 
 import AgentListings from './AgentListings'
-
+import './AgentProfile.css'
 
 class AgentProfile extends Component {
 
-    logout = () => {
-        axios.get('/api/realtor/logout')
-        .then(() => {
-            this.props.logoutUser()
-        })
-    }
+  
     render() {
         return (
-            <div>
-                <h1>{this.props.first_name} {this.props.last_name}</h1>
-                <Link to='/profile/agent/listing/create'>Create A Listing</Link>
+            <div className='agent-profile'>
+                <div>
+                
                 <AgentListings />
-
-                <Link to='/portal'>
-                    <button onClick={this.logout}>Logout</button>
-                </Link>
+                </div>
+                
             </div>
         )
     }
