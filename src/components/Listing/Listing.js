@@ -40,8 +40,13 @@ export default class Listing extends Component {
                     <div>
                         <p className='listing-id-money'>$ {this.state.listing.price}</p>
                     </div>
-                    <div>
-                        <p>{}</p>
+                    <div className='listing-id-type'>
+                        <p>{this.state.listing.type_description}</p>
+                        <p className='listing-id-style'>Style: {this.state.listing.style_description}</p>
+                    </div>
+                    <div className='listing-id-acres'>
+                        <p>Lot Size: {this.state.listing.acreage}</p>
+                        <p className='listing-id-sq'>{this.state.listing.square_footage} sq ft</p>
                     </div>
                     <div>
                         <h1 className='description'>Description:</h1>
