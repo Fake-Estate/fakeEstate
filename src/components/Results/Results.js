@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import MobileMap from '../MobileMap/MobileMap'
 import { Link } from 'react-router-dom'
 
 // React Redux
@@ -78,6 +79,7 @@ class Results extends Component {
                     {mappedListings}
                 </div>
 
+                <MobileMap />
                 {/* map box for the future */}
                 {/* <div className='main-part'>
                     <div className='box-map'>
