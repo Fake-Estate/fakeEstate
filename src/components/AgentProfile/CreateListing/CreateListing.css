@@ -1,9 +1,106 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
+.createListing {
+    height: 100vh;
+    width: 100vw;
+    background: #e5e5e5;
+    position: absolute;
+    
+}
+
+.h1-txt {
+    margin-bottom: .5em;
+    margin-top: 1.5em;
+    font-family: 'Raleway', sans-serif;
+    font-size: 6em;
+    color: #3c3f63;
+    margin-left: 2.6em;
+}
+
+.box {
+    height: 100vh;
+    width: 100vw;
+    background: #e5e5e5;
+    margin-bottom: 1em;
+    top: 2px;
+}
+
+.create-inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #e5e5e5;
+}
+
+.create-inputs > input {
+    font-family: 'Raleway', sans-serif;
+    height: 30px;
+    width: 75%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    font-size: 12pt;
+    outline: none;
+    margin-top: 12px;
+}
+
+.create-inputs > textarea {
+    font-family: 'Raleway', sans-serif;
+    height: 60px;
+    width: 75%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    font-size: 12pt;
+    outline: none;
+    margin-top: 12px;
+}
+
+.create-inputs > button {
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+    border: 1px solid #A6A6C7;
+    width: 45%;
+    height: 3em;
+    font-size: 12pt;
+    border-radius: 1px;
+    outline: none;
+    margin-bottom: 2em;
+    margin-top: 12px;
+    background: #3c3f63;
+    color: white;
+
+}
+
+.cancel {
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+    border: 1px solid #A6A6C7;
+    width: 575px;
+    height: 3em;
+    font-size: 12pt;
+    border-radius: 1px;
+    outline: none;
+    background: #3c3f63;
+    color: white;
+}
+
 @media(max-width: 414px){
 
     .createListing {
         /* margin-top: 2em; */
+        position: absolute;
+        top: 96px;
+        z-index: 1;
+        background: #e5e5e5;
+        /* display:flex; */
+        /* flex-direction: column; */
+    }
+    .h1-txt {
+        /* margin-top: 1em; */
+        margin-bottom: 1em;
+        margin-left: 1.2em;
+        font-family: 'Raleway', sans-serif;
+        font-size: 2em;
     }
 
     .box {
@@ -11,5 +108,66 @@
         width: 100vw;
         background: #e5e5e5;
         margin-bottom: 1em;
+        top: 2px;
+    }
+
+    .create-inputs {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2em;
+        background: #e5e5e5;
+    }
+
+    .create-inputs > input {
+        font-family: 'Raleway', sans-serif;
+        height: 30px;
+        width: 75%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        font-size: 12pt;
+        outline: none;
+        margin-top: 12px;
+    }
+
+    .create-inputs > textarea {
+        font-family: 'Raleway', sans-serif;
+        height: 90px;
+        width: 75%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        font-size: 12pt;
+        outline: none;
+        margin-top: 12px;
+        /* text-decoration: none; */
+    }
+
+    .create-inputs > button {
+        font-family: 'Raleway', sans-serif;
+        border: none;
+        width: 260px;
+        height: 40px;
+        background: #3c3f63;
+        font-size: 15pt;
+        color: white;
+        border-radius: 3px;
+        outline: none;
+        margin-bottom: 2em;
+        margin-top: 12px;
+    }
+
+    .cancel {
+        font-family: 'Raleway', sans-serif;
+        border: none;
+        width: 260px;
+        height: 40px;
+        background: #3c3f63;
+        font-size: 15pt;
+        color: white;
+        border-radius: 3px;
+        outline: none;
+        margin-bottom: 2em;
+        /* margin-top: 5px; */
     }
 }
