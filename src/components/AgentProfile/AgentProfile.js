@@ -19,17 +19,16 @@ class AgentProfile extends Component {
         console.log(this.props)
         return (
             <div className='agent-profile'>
-                <div>
+                <div className="logout">
                 <Link to='/portal'>
-                    <button onClick={this.logout}>Logout</button>
+                    <button onClick={this.logout} className='btns logout'>Logout</button>
                 </Link>
                 </div>
-                <div>
+                <div className="info-box">
                 <h1>Welcome Back, {this.props.first_name} {this.props.last_name}!</h1>
                 <Link to='/profile/agent/listing/create'>Create A Listing</Link>
-                <AgentListings />
                 </div>
-                
+                <AgentListings />
             </div>
         )
     }

@@ -1,8 +1,10 @@
 .mapped-listings{
-    /* margin-top: 10em; */
+    margin-top: 3em;
     height: 100%;
+    min-width: 100%;
     background: #e5e5e5;
-    /* position: relative; */
+    /* margin-left: 6em; */
+    position: relative;
     
     
 }

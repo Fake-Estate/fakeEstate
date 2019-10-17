@@ -49,7 +49,7 @@ class AgentListings extends Component {
         })
         return (
             <div className='mapped-listings'>
-               <div>{mappedListing}</div> 
+               {mappedListing} 
             </div>
         )
     }
