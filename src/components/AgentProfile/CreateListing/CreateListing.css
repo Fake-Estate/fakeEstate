@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+@media(max-width: 414px){
+
+    .createListing {
+        /* margin-top: 2em; */
+    }
+
+    .box {
+        height: 100vh;
+        width: 100vw;
+        background: #e5e5e5;
+        margin-bottom: 1em;
+    }
+}
