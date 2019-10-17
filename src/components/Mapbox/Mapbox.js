@@ -105,7 +105,7 @@ export default class Mapbox extends Component {
                 <ReactMapGL
                     ref={this.mapRef}
                     {...viewport}
-                    mapStyle="mapbox://styles/mapbox/dark-v9"
+                    mapStyle="mapbox://styles/mapbox/light-v9"
                     onViewportChange={this._onViewportChange}
                     mapboxApiAccessToken={MAPBOX_TOKEN}
                 >

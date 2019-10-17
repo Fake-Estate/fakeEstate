@@ -87,8 +87,8 @@ export default class AgentListing extends Component {
 
         axios.put(`/api/realtor/listing/edit/${id}`, body)
             .then(res => {
-                this.props.handleUpdateToggle()
-                this.props.getRealtorListing()
+                this.handleUpdateToggle()
+                this.props.getRealtorListings()
             }).catch(error => {
                 console.log(error, 'error!!!!!!')
             })
