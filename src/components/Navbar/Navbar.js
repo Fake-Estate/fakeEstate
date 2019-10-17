@@ -30,13 +30,17 @@ class Navbar extends Component {
                             </p>
                             </Link>
                     </div>
-                    <img 
-                        data-testid = 'burgerrs'
-                        src = {burger}
-                        alt='menu' 
-                        onClick={this.slideOut} 
-                        className="burger-menu"
-                    />
+                    <div className='fakeEstate-right'>
+                        <img 
+                            data-testid = 'burgerrs'
+                            src = {burger}
+                            alt='menu' 
+                            onClick={this.slideOut} 
+                            className="burger-menu"
+                        />
+                        <Link to='/portal' className='realtor-btn' onClick={this.slideOut}>Realtor Portal</Link>
+                        <Link to='/map' className='map-btn' onClick={this.slideOut}>Map</Link>
+                    </div>
                 </div>
                 <div className={this.props.slide ? "nav-menu slide-out" : "nav-menu"}>
                     <div className='empty-space' onClick={this.slideOut}></div>
