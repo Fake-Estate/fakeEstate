@@ -14,7 +14,7 @@ class App extends Component {
       <div>
       <Navbar />
       </div>
-      <div>
+      <div className="router">
       {Router}
       </div>
     </div>
