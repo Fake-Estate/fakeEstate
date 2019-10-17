@@ -54,7 +54,7 @@ class Results extends Component {
                 <div className="listing-tile-container">
                      <Link to={`/listing/${listing.id}`}>
                         <div className="listing-tile">
-                            <img className='house-image' src={listing.img} alt='Image'/>
+                            <img className='house-image' src={listing.img} alt='Houses'/>
                             <div className="text-info-container">
                                 <div className="text-info1">
                                     <h2 className="h2-txt">Address</h2>
