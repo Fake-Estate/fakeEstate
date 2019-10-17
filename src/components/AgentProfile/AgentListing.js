@@ -106,6 +106,7 @@ export default class AgentListing extends Component {
                 (<div className="main-agent-listings">
                    
                        <div className='listing'>
+                            <div className='listing-box'>
                             <img src={listing.img} className='listing-img'/>
                             <br />
                             <span>${listing.price}</span>
@@ -122,12 +123,15 @@ export default class AgentListing extends Component {
                             <label>Bathroom(s): </label>
                             <br />
                             <span> {listing.bathrooms}</span>
+                            <br />
                             <label>Acreage:</label>
                             <span>{listing.acreage}</span>
-                        </div>  
+                          <br />
+                            </div>
                         <button onClick={this.handleUpdateToggle}>Edit</button>
-                        <button onClick={() => this.deleteListing(listing.id)}>Delete</button>
-                    
+                        <br />
+                        <button onClick={() => this.deleteListing(listing.id)} >Delete</button>
+                        </div>
                     </div>)
                 :
                     (<div>

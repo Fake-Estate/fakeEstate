@@ -9,15 +9,25 @@ import './AgentProfile.css'
 
 class AgentProfile extends Component {
 
-  
+    logout = () => {
+        axios.get('/api/realtor/logout')
+        .then(() => {
+            this.props.logoutUser()
+        })
+    }
     render() {
         return (
             <div className='agent-profile'>
-                <div>
-                
-                <AgentListings />
+                <div className="logout">
+                <Link to='/portal'>
+                    <button onClick={this.logout} className='btns logout'>Logout</button>
+                </Link>
                 </div>
-                
+                <div className="info-box">
+                <h1>Welcome Back, {this.props.first_name} {this.props.last_name}!</h1>
+                <Link to='/profile/agent/listing/create'>Create A Listing</Link>
+                </div>
+                <AgentListings />
             </div>
         )
     }

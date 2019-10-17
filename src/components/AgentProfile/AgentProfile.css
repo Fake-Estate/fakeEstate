@@ -1,6 +1,30 @@
 .agent-profile{
-    height: 100vh;
-    width: 100vw;
+    height: 10%;
+    width: 100%;
     background: #e5e5e5;
+    position: absolute;
+    top: 96px;
+    z-index: 1;
+    display: flex;
+    flex-direction: row-reverse;
     /* margin-top: 10em; */
+}
+
+.logout{
+    height: 1em;
+    font-family: 'Raleway', sans-serif;
+    margin-left: 1em;
+}
+
+.info-box{
+    height: 4em;
+    width: 4em;
+    font-family: 'Raleway', sans-serif;
+    /* z-index: 999; */
+}
+
+.logout{
+    height: 2em;
+    width: 5em;
+    margin-right: 3em;
 }
