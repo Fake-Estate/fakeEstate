@@ -89,8 +89,8 @@ class AgentAuth extends Component {
     render() {
         return (
             <main className='agentauth-main'>
-                <h1 classname='portal-title'>Realtor Portal</h1>
                 <div className='agentauth-btns'>
+                    <h1 className='portal-title'>Realtor Portal</h1>
                     <button onClick={this.handleRegisterToggle} className='register-btn'>Register</button>
                     <button onClick={this.handleLoginToggle} className='login-btn'>Login</button>
                 </div>
