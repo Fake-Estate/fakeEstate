@@ -99,30 +99,35 @@ export default class AgentListing extends Component {
         const {listing} = this.props
         console.log(this.props)
         return (
-           <div>
+           <div className='inner-listing'>
+               <div className='inner-listing'></div>
                {!this.state.editStatus
                ?
                 (<div className="main-agent-listings">
-                   <div className='inner-'>
-                       <span>{listing.img}</span>
-                        <span>{listing.address}</span>
-                        <span>{listing.city} {listing.state}, {listing.zip}</span>
-                        <span>{listing.square_footage}</span>
-                        <span>{listing.bedrooms} {listing.bathrooms}</span>
-                        <span>{listing.price}</span>
-                        <span>{listing.acreage}</span>
-                        <span>{listing.description}</span>
-                        <span>{listing.style_description}</span>
-                        <span>{listing.type_description}</span>
-                        <span>{listing.int_description}</span>
-                        <span>{listing.ext_description}</span>
-                        <span>{listing.other_description}</span>
-                        <span>{listing.inclusions_description}</span>
-                        <span>{listing.hoa_description}</span>
-                        <span>{listing.rooms_description}</span>
+                   
+                       <div className='listing'>
+                            <img src={listing.img} className='listing-img'/>
+                            <br />
+                            <span>${listing.price}</span>
+                            <br />
+                            <span>{listing.address}</span>
+                            <br />
+                            <span>{listing.city} {listing.state}, {listing.zip}</span>
+                            <br />
+                            <label>Sq.Ft.: </label>
+                            <span>{listing.square_footage}</span>
+                            <br />
+                            <label>Bedroom(s): </label>
+                            <span>{listing.bedrooms}</span>
+                            <label>Bathroom(s): </label>
+                            <br />
+                            <span> {listing.bathrooms}</span>
+                            <label>Acreage:</label>
+                            <span>{listing.acreage}</span>
+                        </div>  
                         <button onClick={this.handleUpdateToggle}>Edit</button>
                         <button onClick={() => this.deleteListing(listing.id)}>Delete</button>
-                    </div>
+                    
                     </div>)
                 :
                     (<div>

@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import axios from 'axios'
+import {logoutUser} from './../../redux/reducers/reducer'
 
 import AgentListings from './AgentListings'
-
+import './AgentProfile.css'
 
 class AgentProfile extends Component {
+
+  
     render() {
         console.log(this.props)
         return (
-            <div>
-                <h1>{this.props.first_name} {this.props.last_name}</h1>
-                <Link to='/profile/agent/listing/create'>Create A Listing</Link>
+            <div className='agent-profile'>
+                <div>
+                
                 <AgentListings />
+                </div>
+                
             </div>
         )
     }
@@ -22,4 +28,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(AgentProfile)
+export default connect(mapStateToProps, {logoutUser})(AgentProfile)
