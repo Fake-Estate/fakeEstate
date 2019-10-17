@@ -57,9 +57,10 @@ class Landing extends Component {
             )
         })
         return (
+            <div className='outer-landing'>
             <div className='landing-container'>
                 <div className='title-container'>
-                Real Estate of Utah
+                <h1 className='title'>Real Estate <br /> of Utah</h1>
                 </div>
                 <div className="search-container">
                         <input 
@@ -70,9 +71,10 @@ class Landing extends Component {
                             onChange={this.handleChange}
                             value={this.state.searchText}
                         />
-                        <button className="middle-input search-btn" onClick={this.updateReduxSearchString}>Search</button>
+                        <button className="middle-input btns" onClick={this.updateReduxSearchString}>Search</button>
                     </div>
                 
+            </div>
             </div>
         )
     }
