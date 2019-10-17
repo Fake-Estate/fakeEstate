@@ -3,6 +3,7 @@ import axios from 'axios'
 import { realtorInfo } from '../../../redux/reducers/reducer'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
+import './CreateListing.css'
 
 
 class CreateListing extends Component {
@@ -194,46 +195,46 @@ class CreateListing extends Component {
                         value={this.state.type_description}
                         className='description input'
                     />
-                    <textarea 
+                    {/* <textarea 
                         type='text'
                         placeholder='Interior Features Info'
                         name='int_description'
                         onChange={this.handleChange}
                         value={this.state.int_description}
                         className='description input'
-                    />
-                    <textarea 
+                    /> */}
+                    {/* <textarea 
                         type='text'
                         placeholder='Exterior Features Info'
                         name='ext_description'
                         onChange={this.handleChange}
                         value={this.state.ext_description}
                         className='description input'
-                    />
-                    <textarea 
+                    /> */}
+                    {/* <textarea 
                         type='text'
                         placeholder='Home Inclusions Info'
                         name='inclusions_description'
                         onChange={this.handleChange}
                         value={this.state.inclusions_description}
                         className='description input'
-                    />
-                    <textarea 
+                    /> */}
+                    {/* <textarea 
                         type='text'
                         placeholder='HOA Info'
                         name='hoa_description'
                         onChange={this.handleChange}
                         value={this.state.hoa_description}
                         className='description input'
-                    />
-                    <textarea 
+                    /> */}
+                    {/* <textarea 
                         type='text'
                         placeholder='Rooms Features Info'
                         name='rooms_description'
                         onChange={this.handleChange}
                         value={this.state.rooms_description}
                         className='description input'
-                    />
+                    /> */}
                     <textarea
                         type='text'
                         placeholder='Upload Photo'

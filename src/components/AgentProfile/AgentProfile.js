@@ -16,7 +16,6 @@ class AgentProfile extends Component {
         })
     }
     render() {
-        console.log(this.props)
         return (
             <div>
                 <h1>{this.props.first_name} {this.props.last_name}</h1>
