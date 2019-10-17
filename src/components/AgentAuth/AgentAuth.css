@@ -1,115 +1,142 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-.agentauth-btns{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.register-btn{
-    font-family: 'Lato', sans-serif;
-    border: 1px solid #A6A6C7;
-    width: 260px;
-    height: 40px;
-    background: white;
-    font-size: 15pt;
-    margin-bottom: 12px;
-    border-radius: 1px;
-    outline: none;
-}
+@media(max-width: 414px){
+    .agentauth-main{
+        height: 100vh;
+        width: 100vw;
+        background: #e5e5e5
 
-.login-btn{
-    font-family: 'Lato', sans-serif;
-    border: none;
-    width: 260px;
-    height: 40px;
-    background: #A6A6C7;
-    font-size: 15pt;
-    color: white;
-    border-radius: 1px;
-    outline: none;
-}
+    }
 
-.display-register{
-    position: fixed;
-    min-height: 50vh;
-    width: 100%;
-    top: 25vh;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
+    .portal-title{
+        /* margin-top: 60em; */
+        font-family: 'Raleway', sans-serif;
+        font-size: 6em;
+    }
+    
+    .agentauth-btns{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-.display-login{
-    position: fixed;
-    min-height: 50vh;
-    width: 100%;
-    top: 25vh;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
+    .register-btn{
+        font-family: 'Raleway', sans-serif;
+        border: 1px solid #A6A6C7;
+        width: 260px;
+        height: 40px;
+        color: #3c3f63;
+        background: white;
+        font-size: 15pt;
+        margin-bottom: 1em;
+        border-radius: 1px;
+        outline: none;
+    }
 
-.register-title{
-    font-family: 'Lato', sans-serif;
-    font-size: 28px;
-}
+    .register-btn:hover{
+        background: linear-gradient(79deg, rgba(60,63,99,1) 0%, rgba(166,166,199,1) 100%);
+        color: #A6A6C7;
+    }
 
-.register-inputs{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .login-btn{
+        font-family: 'Raleway', sans-serif;
+        border: none;
+        width: 260px;
+        height: 40px;
+        background: #3c3f63;
+        font-size: 15pt;
+        color: white;
+        border-radius: 3px;
+        outline: none;
+    }
 
-.register-inputs > input{
-    font-family: 'Lato', sans-serif;
-    height: 30px;
-    width: 75%;
-    box-sizing: border-box;
-    padding-left: 10px;
-    font-size: 12pt;
-    outline: none;
-    margin-top: 12px;
-}
+    .register-btn:hover{
+        background: linear-gradient(79deg, rgba(60,63,99,1) 0%, rgba(166,166,199,1) 100%);
+        color: #A6A6C7;
+    }
 
-.register-btns{
-    width: 75%;
-    display: flex;
-    justify-content: space-between;
-}
+    .display-register{
+        position: fixed;
+        min-height: 50vh;
+        width: 100%;
+        top: 25vh;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
 
-.register-cancel{
-    font-family: 'Lato', sans-serif;
-    box-sizing: border-box;
-    border: 1px solid #A6A6C7;
-    width: 100px;
-    height: 30px;
-    background: white;
-    font-size: 12pt;
-    border-radius: 1px;
-    outline: none;
-}
+    .display-login{
+        position: fixed;
+        min-height: 50vh;
+        width: 100%;
+        top: 25vh;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
 
-.register-submit{
-    font-family: 'Lato', sans-serif;
-    box-sizing: border-box;
-    border: none;
-    width: 100px;
-    height: 30px;
-    background: #A6A6C7;
-    font-size: 12pt;
-    color: white;
-    border-radius: 1px;
-    outline: none;
-}
+    .register-title{
+        font-family: 'Lato', sans-serif;
+        font-size: 28px;
+    }
 
-.dont-display{
-    display: none
+    .register-inputs{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .register-inputs > input{
+        font-family: 'Lato', sans-serif;
+        height: 30px;
+        width: 75%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        font-size: 12pt;
+        outline: none;
+        margin-top: 12px;
+    }
+
+    .register-btns{
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .register-cancel{
+        font-family: 'Lato', sans-serif;
+        box-sizing: border-box;
+        border: 1px solid #A6A6C7;
+        width: 100px;
+        height: 30px;
+        background: white;
+        font-size: 12pt;
+        border-radius: 1px;
+        outline: none;
+    }
+
+    .register-submit{
+        font-family: 'Lato', sans-serif;
+        box-sizing: border-box;
+        border: none;
+        width: 100px;
+        height: 30px;
+        background: #A6A6C7;
+        font-size: 12pt;
+        color: white;
+        border-radius: 1px;
+        outline: none;
+    }
+
+    .dont-display{
+        display: none
+    }
 }

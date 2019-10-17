@@ -88,8 +88,8 @@ class AgentAuth extends Component {
 
     render() {
         return (
-            <div>
-                <div className='agentauth-margin'/>
+            <main className='agentauth-main'>
+                <h1 classname='portal-title'>Realtor Portal</h1>
                 <div className='agentauth-btns'>
                     <button onClick={this.handleRegisterToggle} className='register-btn'>Register</button>
                     <button onClick={this.handleLoginToggle} className='login-btn'>Login</button>
@@ -165,8 +165,8 @@ class AgentAuth extends Component {
                             <button className='register-cancel' onClick={this.handleLoginToggle}>Cancel</button>
                             <button className='register-submit' onClick={this.loginAgent}>Login</button>
                         </section>
-                    </div>
-            </div>
+                </div>
+            </main>
         )
     }
 }
