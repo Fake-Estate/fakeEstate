@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 
-
+import './AgentListing.css'
 
 export default class AgentListing extends Component { 
     constructor(){
@@ -102,8 +102,9 @@ export default class AgentListing extends Component {
            <div>
                {!this.state.editStatus
                ?
-                (<div>
-                   <Link><div>
+                (<div className="main-agent-listings">
+                   <div className='inner-'>
+                       <span>{listing.img}</span>
                         <span>{listing.address}</span>
                         <span>{listing.city} {listing.state}, {listing.zip}</span>
                         <span>{listing.square_footage}</span>
@@ -121,7 +122,7 @@ export default class AgentListing extends Component {
                         <span>{listing.rooms_description}</span>
                         <button onClick={this.handleUpdateToggle}>Edit</button>
                         <button onClick={() => this.deleteListing(listing.id)}>Delete</button>
-                    </div></Link>
+                    </div>
                     </div>)
                 :
                     (<div>
