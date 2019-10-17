@@ -14,10 +14,10 @@ export default(
         <Switch>
             <Route exact path = '/' component = {Landing} />
             <Route path = '/results' component = {Results} />
+            <Route path = '/listing/:id' component = {Listing} />
             <Route path = '/portal' component = {AgentAuth} />
             <Route exact path = '/profile/agent' component = {AgentProfile} />
             <Route path = '/profile/agent/listing/create' component = {CreateListing} />
             <Route path = '/map' component = {MobileMap} />
-            <Route path = '/listing/:id' component = {Listing} />
         </Switch>
 )

@@ -43,33 +43,32 @@ class Results extends Component {
         this.setState({popupInfo:null})
     }
 
-    goToListing = (listing) => {
-        this.props.history.push(`/details/${listing.id}`)
-    }
+    // goToListing = (listing) => {
+    //     this.props.history.push(`api/listing/${id}`)
+    // }
 
     render() {
-        console.log(this.state.listings)
         const mappedListings = this.state.listings.map(listing => {
-            console.log(listing)
+            
             return(
-                <div className="listing-tile-container" onClick={(listing) => this.goToListing(listing)}>
-                    <div className="listing-tile">
-                        <img className="house-image" src="https://source.unsplash.com/random/?house" alt="house"/>
-                        <div className="text-info-container">
-                            <div className="text-info1">
-                                <h2 className="h2-txt">Address</h2>
-                                <p className="p-txt">{listing.city}, {listing.state}</p>
-                            </div>
-                            <div className="text-info1">
-                                <h2 className="h2-txt">Description</h2>
-                                <p className="p-txt">{listing.description}</p>
+                <div className="listing-tile-container">
+                     <Link to={`/listing/${listing.id}`}>
+                        <div className="listing-tile">
+                            <img className='house-image' src={listing.img} alt='Image'/>
+                            <div className="text-info-container">
+                                <div className="text-info1">
+                                    <h2 className="h2-txt">Address</h2>
+                                    <p className="p-txt">{listing.city}, {listing.state}</p>
+                                </div>
+                                {/* <div className="text-info1">
+                                    <h2 className="h2-txt">Description</h2>
+                                    <p className="p-txt">{listing.description}</p>
+                                </div> */}
                             </div>
                         </div>
+                     </Link>
                     </div>
-                </div>
-                // <Link key={i} to={`/details/${e.id}`} className='pin-link'>
-                    
-                // </Link>
+               
             )
         })
         return (

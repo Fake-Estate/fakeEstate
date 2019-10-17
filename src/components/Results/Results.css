@@ -27,6 +27,11 @@
     margin-right: 10px;
 }
 
+.listing-tile-container > a {
+    text-decoration: none;
+    color: black;
+}
+
 .listing-tile-container {
     display: flex;
     justify-content: space-between;
@@ -40,6 +45,8 @@
     width: 90%;
     margin: 2%;
 }
+
+
 
 .listing-tile {
     display: flex;
