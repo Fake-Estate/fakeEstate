@@ -1,3 +1,91 @@
-.listing-margin{
-    height: 75px;
+@media(max-width:414px){
+    .listing-id-main{
+       
+        width:100%;
+    }
+    .listing-id-container{
+        
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        
+
+    }
+    .listing-id-img{
+        width:100%;
+        height:60%;
+        margin-top:10vh;
+    }
+
+    .house{
+        width:100%;
+        height:100%;
+    }
+
+    .listing-id-flex{
+        display:flex;
+        margin-bottom: 10px;
+
+    }
+
+    .listing-id-info{
+        display: flex;
+        font-family: 'Raleway', sans-serif;
+        font-size: 23px;
+    }
+
+    .listing-id-address{
+        font-family: 'Raleway', sans-serif; 
+        font-size: 23px;
+        margin-right:25px;
+        margin-left:15px;
+    }
+
+    .listing-id-city{
+        font-family: 'Raleway', sans-serif; 
+        font-size: 23px;
+    }
+
+    .listing-id-state{
+        font-family: 'Raleway', sans-serif; 
+        font-size: 25px;
+        margin-left:25px;
+    }
+
+    .listing-id-zip{
+        margin-right:80px;
+    }
+
+    .listing-id-rooms{
+        font-family: 'Raleway', sans-serif; 
+        font-size: 20px;
+        display:flex;
+        margin-top:20px;
+        margin-bottom:10px;
+        margin-left:20px;
+    }
+
+    .listing-id-money{
+        font-family: 'Raleway', sans-serif; 
+        font-size: 20px;
+        display:flex;
+        margin-top:15px;
+        margin-left:20px;
+        margin-bottom:50px;
+    }
+
+    .listing-id-description{
+        font-family: 'Raleway', sans-serif;
+        display:flex;
+        margin-left:15px;
+        margin-right:15px;
+        font-size:17px;
+    }
+
+    .description{
+        font-family: 'Raleway', sans-serif;
+        font-size: 20px;
+        margin-left:15px;
+        margin-bottom:10px;
+    }
 }
