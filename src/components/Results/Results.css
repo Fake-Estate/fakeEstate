@@ -22,28 +22,28 @@
 
 .house-image {
     border-radius: 4px;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     margin-right: 10px;
 }
 
 .listing-tile-container > a {
     text-decoration: none;
-    color: black;
+    color: #3c3f63;
 }
 
 .listing-tile-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     background: #E5E5E5;
     -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
     padding: 2%;
     border-radius: 4px;
-    width: 90%;
+    width: 60%;
     margin: 2%;
+    margin-left: 210px;
 }
 
 
@@ -62,6 +62,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 }
 
 .h2-txt {

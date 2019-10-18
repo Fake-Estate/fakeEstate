@@ -197,7 +197,7 @@ class CreateListing extends Component {
                             <textarea
                                 type='text'
                                 placeholder='Upload Photo'
-                                name='photo'
+                                name='img'
                                 onChange={this.handleChange}
                                 // value={this.state.img}
                                 className='description input'
