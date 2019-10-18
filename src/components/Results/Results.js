@@ -31,7 +31,6 @@ class Results extends Component {
 
     getListings = () => {
         axios.get(`/api/listings?search=${this.props.searchString}`).then((res) => {
-            console.log(res.data)
             this.setState({
                 listings: res.data
             })
@@ -57,8 +56,13 @@ class Results extends Component {
                             <img className='house-image' src={listing.img} alt='Houses'/>
                             <div className="text-info-container">
                                 <div className="text-info1">
-                                    <h2 className="h2-txt">Address</h2>
+                                    <h2 className='h2-txt'>${listing.price}</h2>
+                                    <h2 className="h2-txt">{listing.address}</h2>
                                     <p className="p-txt">{listing.city}, {listing.state}</p>
+                                    <p className="p-txt">{listing.bedrooms} Bedrooms, {listing.bathrooms} Bathrooms</p>
+                                    <p className="p-txt">{listing.square_footage} Square Feet</p>
+                                    <p className="p-txt">{listing.style_description}</p>
+                                    <p className="p-txt">{listing.type_description}</p>
                                 </div>
                                 {/* <div className="text-info1">
                                     <h2 className="h2-txt">Description</h2>
