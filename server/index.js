@@ -14,6 +14,8 @@ const searchCtrl = require('./controllers/search_ctrl')
 const app = express()
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 app.use(express.json())
 app.use(cors())
 app.use(session({
